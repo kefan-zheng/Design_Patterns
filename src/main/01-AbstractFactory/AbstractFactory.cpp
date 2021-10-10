@@ -1,13 +1,4 @@
-/*
- * C++ Design Patterns: Abstract Factory
- * Author: Jakub Vojvoda [github.com/JakubVojvoda]
- * 2016
- *
- * Source code is licensed under MIT License
- * (for more details see LICENSE)
- *
- */
-
+//本例子中只有一个工厂（乒乓球），产生多个比赛项目
 #include <iostream>
 
  /*
@@ -15,41 +6,38 @@
   * products implement the same interface so that the classes can refer
   * to the interface not the concrete product
   */
-class ProductA
+class Single
 {
 public:
-    virtual ~ProductA() {}
+    virtual ~Single() {}
 
     virtual const char* getName() = 0;
-    // ...
 };
 
 /*
  * ConcreteProductAX and ConcreteProductAY
  * define objects to be created by concrete factory
  */
-class ConcreteProductAX : public ProductA
+class MenSingle : public Single
 {
 public:
-    ~ConcreteProductAX() {}
+    ~MenSingle() {}
 
     const char* getName()
     {
-        return "A-X";
+        return "MenSingle";
     }
-    // ...
 };
 
-class ConcreteProductAY : public ProductA
+class WomenSingle : public Single
 {
 public:
-    ~ConcreteProductAY() {}
+    ~WomenSingle() {}
 
     const char* getName()
     {
-        return "A-Y";
+        return "WomenSingle";
     }
-    // ...
 };
 
 /*
@@ -57,41 +45,38 @@ public:
  * same as Product A, Product B declares interface for concrete products
  * where each can produce an entire set of products
  */
-class ProductB
+class Doubles
 {
 public:
-    virtual ~ProductB() {}
+    virtual ~Doubles() {}
 
     virtual const char* getName() = 0;
-    // ...
 };
 
 /*
  * ConcreteProductBX and ConcreteProductBY
  * same as previous concrete product classes
  */
-class ConcreteProductBX : public ProductB
+class MenDoubles : public Doubles
 {
 public:
-    ~ConcreteProductBX() {}
+    ~MenDoubles() {}
 
     const char* getName()
     {
-        return "B-X";
+        return "MenDoubles";
     }
-    // ...
 };
 
-class ConcreteProductBY : public ProductB
+class WomenDoubles : public Doubles
 {
 public:
-    ~ConcreteProductBY() {}
+    ~WomenDoubles() {}
 
     const char* getName()
     {
-        return "B-Y";
+        return "WomenDoubles";
     }
-    // ...
 };
 
 /*
@@ -103,8 +88,8 @@ class AbstractFactory
 public:
     virtual ~AbstractFactory() {}
 
-    virtual ProductA* createProductA() = 0;
-    virtual ProductB* createProductB() = 0;
+    virtual Single* createSingleGame() = 0;
+    virtual Doubles* createDoublesGame() = 0;
 };
 
 /*
@@ -112,55 +97,34 @@ public:
  * each concrete factory create a family of products and client uses
  * one of these factories so it never has to instantiate a product object
  */
-class ConcreteFactoryX : public AbstractFactory
+class TableTennisFactory : public AbstractFactory
 {
 public:
-    ~ConcreteFactoryX() {}
+    ~TableTennisFactory() {}
 
-    ProductA* createProductA()
+    Single* createSingleGame()
     {
-        return new ConcreteProductAX();
+        return new MenSingle();
     }
-    ProductB* createProductB()
+    Doubles* createDoublesGame()
     {
-        return new ConcreteProductBX();
+        return new MenDoubles();
     }
-    // ...
 };
-
-class ConcreteFactoryY : public AbstractFactory
-{
-public:
-    ~ConcreteFactoryY() {}
-
-    ProductA* createProductA()
-    {
-        return new ConcreteProductAY();
-    }
-    ProductB* createProductB()
-    {
-        return new ConcreteProductBY();
-    }
-    // ...
-};
-
 
 int test_abstractfactory()
 {
-    ConcreteFactoryX* factoryX = new ConcreteFactoryX();
-    ConcreteFactoryY* factoryY = new ConcreteFactoryY();
+    TableTennisFactory* factory = new TableTennisFactory();
 
-    ProductA* p1 = factoryX->createProductA();
-    std::cout << "Product: " << p1->getName() << std::endl;
-
-    ProductA* p2 = factoryY->createProductA();
-    std::cout << "Product: " << p2->getName() << std::endl;
+    Single* p1 = factory->createSingleGame();
+    Doubles* p2 = factory->createDoublesGame();
+    std::cout << "ProjectName1: " << p1->getName() << std::endl;
+    std::cout << "ProjectName2: " << p2->getName() << std::endl;
 
     delete p1;
     delete p2;
 
-    delete factoryX;
-    delete factoryY;
+    delete factory;
 
     return 0;
 }

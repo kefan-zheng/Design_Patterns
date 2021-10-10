@@ -1,46 +1,33 @@
-/*
- * C++ Design Patterns: Builder
- * Author: Jakub Vojvoda [github.com/JakubVojvoda]
- * 2016
- *
- * Source code is licensed under MIT License
- * (for more details see LICENSE)
- *
- */
-
 #include <iostream>
 #include <string>
 
  /*
-  * Product
   * the final object that will be created using Builder
   */
-class Product
+class Game
 {
+private:
+    std::string time;
+    std::string place;
+    std::string player;
 public:
-    void makeA(const std::string& part)
+    void setTime(const std::string& part)
     {
-        partA = part;
+        time = part;
     }
-    void makeB(const std::string& part)
+    void setPlace(const std::string& part)
     {
-        partB = part;
+        place = part;
     }
-    void makeC(const std::string& part)
+    void setPlayer(const std::string& part)
     {
-        partC = part;
+        player = part;
     }
     std::string get()
     {
-        return (partA + " " + partB + " " + partC);
+        return ("\nTime:" + time + "\nPlace:" + place + "\nPlayer:" + player);
     }
-    // ...
 
-private:
-    std::string partA;
-    std::string partB;
-    std::string partC;
-    // ...
 };
 
 /*
@@ -49,61 +36,58 @@ private:
  */
 class Builder
 {
+protected:
+    Game game;
 public:
     virtual ~Builder() {}
 
-    Product get()
+    Game get()
     {
-        return product;
+        return game;
     }
 
-    virtual void buildPartA() = 0;
-    virtual void buildPartB() = 0;
-    virtual void buildPartC() = 0;
-    // ...
+    virtual void buildTime() = 0;
+    virtual void buildPlace() = 0;
+    virtual void buildPlayer() = 0;
 
-protected:
-    Product product;
 };
 
 /*
  * Concrete Builder X and Y
  * create real products and stores them in the composite structure
  */
-class ConcreteBuilderX : public Builder
+class SwimmingGameBuilder : public Builder
 {
 public:
-    void buildPartA()
+    void buildTime()
     {
-        product.makeA("A-X");
+        game.setTime("11.06");
     }
-    void buildPartB()
+    void buildPlace()
     {
-        product.makeB("B-X");
+        game.setPlace("SwimmingPool");
     }
-    void buildPartC()
+    void buildPlayer()
     {
-        product.makeC("C-X");
+        game.setPlayer("Phelps");
     }
-    // ...
 };
 
-class ConcreteBuilderY : public Builder
+class RunningGameBuilder : public Builder
 {
 public:
-    void buildPartA()
+    void buildTime()
     {
-        product.makeA("A-Y");
+        game.setTime("11.06");
     }
-    void buildPartB()
+    void buildPlace()
     {
-        product.makeB("B-Y");
+        game.setPlace("TAF-Ground");
     }
-    void buildPartC()
+    void buildPlayer()
     {
-        product.makeC("C-Y");
+        game.setPlayer("Bolt");
     }
-    // ...
 };
 
 /*
@@ -131,19 +115,17 @@ public:
         builder = b;
     }
 
-    Product get()
+    Game get()
     {
         return builder->get();
     }
 
     void construct()
     {
-        builder->buildPartA();
-        builder->buildPartB();
-        builder->buildPartC();
-        // ...
+        builder->buildTime();
+        builder->buildPlace();
+        builder->buildPlayer();
     }
-    // ...
 
 private:
     Builder* builder;
@@ -153,17 +135,17 @@ private:
 int test_builder()
 {
     Director director;
-    director.set(new ConcreteBuilderX);
+    director.set(new SwimmingGameBuilder);
     director.construct();
 
-    Product product1 = director.get();
-    std::cout << "1st product parts: " << product1.get() << std::endl;
+    Game game1 = director.get();
+    std::cout << "1st game: " << game1.get() << std::endl;
 
-    director.set(new ConcreteBuilderY);
+    director.set(new RunningGameBuilder);
     director.construct();
 
-    Product product2 = director.get();
-    std::cout << "2nd product parts: " << product2.get() << std::endl;
+    Game game2 = director.get();
+    std::cout << "2nd game: " << game2.get() << std::endl;
 
     return 0;
 }

@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01-AbstractFactory\AbstractFactory.cpp" />
+    <ClCompile Include="03-Bridge\Bridge.cpp" />
     <ClCompile Include="04-Builder\Builder.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
