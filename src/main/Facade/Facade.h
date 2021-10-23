@@ -1,37 +1,60 @@
 #ifndef _FACADE_H_
 #define _FACADE_H_
 #include <iostream>
+#include <vector>
 using namespace std;
 
-//åŒ»é™¢ç±»
+//Ò½ÔºÀà
 class Hospital
 {
 public:
-    Hospital(){};
-    ~Hospital(){};
+    Hospital() {};
+    ~Hospital() {};
     void AccountingDetection()
     {
-        cout<<"æ ·å“æ­£åœ¨è¿›è¡Œæ ¸é…¸æ£€æµ‹ï¼"<<endl;
+        cout << "ÑùÆ·ÕýÔÚ½øÐÐºËËá¼ì²â£¡" << endl;
     };
 };
 
-//é…’åº—ç±»
+struct HotelInfo {
+    string hotelName;
+    string location;
+    HotelInfo(string h, string l) :
+        hotelName(h), location(l) {}
+};
+
+//¾ÆµêÀà,²ÉÓÃÁË¶àÀýÄ£Ê½
 class Hotel
 {
+private:
+    const int hotelNum = 4;//4¸ö¿É¹©Ñ¡ÔñµÄ¾Æµê
+    static vector<HotelInfo*> hotelList;
+    
 public:
-    Hotel(){};
-    ~Hotel(){};
+    Hotel() {};
+    ~Hotel() {};
     void CheckIn()
     {
-        cout<<"å·²æˆåŠŸåŠžç†å…¥é©»ï¼"<<endl;
+        if (hotelList.size() == 0) {
+            hotelList.push_back(new HotelInfo("Great Hotel", "Heping Street"));
+            hotelList.push_back(new HotelInfo("Yang Hotel", "Success Street"));
+            hotelList.push_back(new HotelInfo("Cao Hotel", "Great Street"));
+            hotelList.push_back(new HotelInfo("Zheng Hotel", "Sisyphus Street"));
+        }
+        srand((unsigned)time(NULL));
+        int randNum = rand() % 4;
+        HotelInfo* info = hotelList[randNum];
+        //HotelInfo* info = new HotelInfo("Great Hotel", "Heping Street");
+        cout << "Check in " << info->hotelName << "(location: " << info->location <<") successfully" << endl;
     }
     void Sampling()
     {
-        cout<<"å·²è¿›è¡Œæ ¸é…¸é‡‡æ ·ï¼Œæ ·å“å°†é€å¾€åŒ»é™¢æ£€æµ‹ã€‚"<<endl;
+        cout << "ÒÑ½øÐÐºËËá²ÉÑù£¬ÑùÆ·½«ËÍÍùÒ½Ôº¼ì²â¡£" << endl;
     }
 };
 
-//äº¤é€šç±»
+
+//½»Í¨Àà
 class Transportation
 {
 public:
@@ -39,11 +62,11 @@ public:
     ~Transportation();
     void GetVehicle()
     {
-        cout<<"å·²å®‰æŽ’ä¸“è½¦ä¸ºæ‚¨å‡ºè¡ŒæœåŠ¡ã€‚"<<endl;
+        cout << "ÒÑ°²ÅÅ×¨³µÎªÄú³öÐÐ·þÎñ¡£" << endl;
     }
 };
 
-//è®­ç»ƒåœºé¦†ç±»
+//ÑµÁ·³¡¹ÝÀà
 class Training
 {
 public:
@@ -51,29 +74,29 @@ public:
     ~Training();
     void TrainingLocation()
     {
-        cout<<"å·²å®‰æŽ’ä¸“å±žçš„è®­ç»ƒåœºæ‰€ä¾›ç‰¹æ®Šè®­ç»ƒã€‚"<<endl;
+        cout << "ÒÑ°²ÅÅ×¨ÊôµÄÑµÁ·³¡Ëù¹©ÌØÊâÑµÁ·¡£" << endl;
     }
 };
 
-//Facadeç±»
+//FacadeÀà
 class Facade
 {
 public:
-    Facade(){};
-    ~Facade(){};
-    //æ ¸é…¸æ£€æµ‹
+    Facade() {};
+    ~Facade() {};
+    //ºËËá¼ì²â
     void Detection()
     {
         _hotel->Sampling();
         _hospital->AccountingDetection();
     }
-    //é¢„çº¦è®­ç»ƒ
+    //Ô¤Ô¼ÑµÁ·
     void AppointTraining()
     {
         _training->TrainingLocation();
         _transportation->GetVehicle();
     }
-    //åŠžç†å…¥é©»
+    //°ìÀíÈë×¤
     void CheckIn()
     {
         _transportation->GetVehicle();
