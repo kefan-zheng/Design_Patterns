@@ -5,70 +5,60 @@ using namespace std;
 
 class Mediator;
 
-class Player {
-
+/*
+ *  CirtainPlayer: 代表某种球员的类
+ *  每个CirtainPlayer都有一个指向Mediator的指针，可以理解为对应一个裁判
+ *  球员不能直接处理场上发生事件，要以裁判为中介来传达自己意图
+ */
+class CirtainPlayer {
 public:
-	static int idCount;
-	Player(Mediator* const m) :
-		mediator(m), ID(++idCount) {}
-
-	~Player() {}
-
-	int getID() {
-		return this->ID;
-	}
-
-	virtual void send(std::string msg) = 0;
-	virtual void receive(int senderID, std::string msg) = 0;
+	static int idCount;//记录已经加入了多少个球员，并以此作为新球员编号
+	CirtainPlayer(Mediator* const m);//构造时传入Mediator*，可视为裁判
+	~CirtainPlayer();
+	int getID();//获取球员编号
+	virtual void send(string msg) = 0; //发送信息给Mediator
+	virtual void receive(int senderID, string msg) = 0; //接收来自Mediator的信息
 protected:
-	int ID;
-	Mediator* mediator;
+	int ID;//球员编号
+	Mediator* mediator;//可视为裁判
 };
-
-class ConcretePlayer : public Player {
-public:
-	ConcretePlayer(Mediator* const m) :
-		Player(m) {}
-	~ConcretePlayer() {}
-
-	void send(std::string msg);
-
-	void receive(int senderID, std::string msg) {
-		cout << "Player" << this->getID() << " stops, as Player" << senderID << " said" << " \"" << msg << "\".\n";;
-	}
-};
-
 
 
 /*
-* defines a interface class of players
+ *  BasketballPlayer: 篮球队员类
+ *  重载了CirtainPlay类中的虚函数send()与receive()，发送与接收信息都与篮球赛有关
+ */
+class BasketballPlayer : public CirtainPlayer {
+public:
+	BasketballPlayer(Mediator* const m);
+	~BasketballPlayer();
+
+	void send(std::string msg);//发送与篮球赛有关信息
+	void receive(int senderID, std::string msg);//接收与篮球赛有关信息
+};
+
+
+/*
+*  Mediator: 中介者抽象类
 */
 class Mediator {
 public:
-	virtual void add(Player* const p) = 0;
+	virtual void add(CirtainPlayer* const p) = 0;
 	virtual void distribute(int senderID, string msg) = 0;
 };
 
+
+/*
+*  ConcreteMediator: 篮球比赛的裁判
+*/
 class ConcreteMediator : public Mediator {
 public:
-	ConcreteMediator() {}
-	void add(Player* const p) {
-		playerList.push_back(p);
-		cout << "Player" << p->getID() << " join the competition.\n";
-	}
-	void distribute(int senderID, string msg) {
-		for (auto player : playerList) {
-			if (senderID != player->getID()) {
-				player->receive(senderID, msg);
-			}
-		}
-	}
-	~ConcreteMediator() {
-		for (auto player : playerList) {
-			delete[] player;
-		}
-		playerList.clear();
-	}
+	ConcreteMediator();
+	void add(CirtainPlayer* const p);//添加球赛运动员
+	void distribute(int senderID, string msg);//将信息分发转告给各运动员
+	~ConcreteMediator();
 private:
-	vector<Player*> playerList;
+	vector<CirtainPlayer*> playerList;//参与比赛的运动员列表
 };
+
+void MediatorTest();//测试函数
