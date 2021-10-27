@@ -67,14 +67,5 @@ private:
 };
 
 
-int main()
-{
-    Foreigner* t = new ForeignTranslator();
-    t->request();
-    delete t;
-
-    return 0;
-}
-
 
 
