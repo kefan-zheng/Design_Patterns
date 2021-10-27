@@ -2,7 +2,7 @@
 // Created by xzb23 on 2021/10/23.
 //
 #include<iostream>
-#include "ObjectAdaptor.h"
+#include "Adaptor.h"
 using namespace std;
 void testAdaptor()
 {
