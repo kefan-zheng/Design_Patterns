@@ -1,12 +1,52 @@
 #include<iostream>
-using namespace std;
+#include"AbstractFactory/AbstractFactory.h"
+#include"Adapter/Adaptor.h"
+#include"Bridge/Bridge.h"
+#include"Builder/Builder.h"
+#include"ChainOfResponsibility/ChainOfResponsibility.h"
+#include"Composite/Composite.h"
+#include"Decorator/Decorator.h"
+#include"Facade/Facade.h"
+#include"Flyweight/Flyweight.h"
+#include"FrontController/FrontController.h"
+#include"Immutable/Immutable.h"
+#include"Iterator/Iterator.h"
+#include"Mediator/Mediator.h"
+#include"Memento/Memento.h"
+#include"Mvc/Mvc.h"
+#include"Observer/Observer.h"
+#include"Proxy/Proxy.h"
+#include"Specification/Specification.h"
+#include"State/State.h"
+#include"Strategy/Strategy.h"
+#include"TemplateMethod/TemplateMethod.h"
+#include"Visitor/Visitor.h"
 
-int test_abstractfactory();
-int test_builder();
+using namespace std;
 
 int main()
 {
-	test_abstractfactory();
-	test_builder();
+	testAbstractFactory();
+	testAdaptor();
+	testBridge();
+	testBuilder();
+	testChainOfResponsibility();
+	testComposite();
+	testDecorator();
+	testFacade();
+	testFlyweight();
+	testFrontController();
+	testImmutable();
+	testIterator();
+	testMediator();
+	testMemento();
+	testMVC();
+	testObserver();
+	testProxy();
+	testSpecification();
+	testState();
+	testStrategy();
+	testTemplateMethod();
+	testVisitor();
 	return 0;
 }

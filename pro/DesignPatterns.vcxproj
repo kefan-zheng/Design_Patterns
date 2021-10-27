@@ -19,10 +19,54 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="01-AbstractFactory\AbstractFactory.cpp" />
-    <ClCompile Include="03-Bridge\Bridge.cpp" />
-    <ClCompile Include="04-Builder\Builder.cpp" />
+    <ClCompile Include="AbstractFactory\AbstractFactory.cpp" />
+    <ClCompile Include="Adapter\Adaptor.cpp" />
+    <ClCompile Include="Bridge\Bridge.cpp" />
+    <ClCompile Include="Builder\Builder.cpp" />
+    <ClCompile Include="ChainOfResponsibility\ChainOfResponsibility.cpp" />
+    <ClCompile Include="Composite\Composite.cpp" />
+    <ClCompile Include="Decorator\Decorator.cpp" />
+    <ClCompile Include="Facade\Facade.cpp" />
+    <ClCompile Include="Flyweight\Flyweight.cpp" />
+    <ClCompile Include="FrontController\FrontController.cpp" />
+    <ClCompile Include="Immutable\Immutable.cpp" />
+    <ClCompile Include="Iterator\Iterator.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Mediator\Mediator.cpp" />
+    <ClCompile Include="Memento\Memento.cpp" />
+    <ClCompile Include="Mvc\Mvc.cpp" />
+    <ClCompile Include="Observer\Observer.cpp" />
+    <ClCompile Include="Proxy\Proxy.cpp" />
+    <ClCompile Include="Specification\Specification.cpp" />
+    <ClCompile Include="State\State.cpp" />
+    <ClCompile Include="Strategy\Strategy.cpp" />
+    <ClCompile Include="TemplateMethod\TemplateMethod.cpp" />
+    <ClCompile Include="Visitor\Visitor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AbstractFactory\AbstractFactory.h" />
+    <ClInclude Include="Adapter\Adaptor.h" />
+    <ClInclude Include="Bridge\Bridge.h" />
+    <ClInclude Include="Builder\Builder.h" />
+    <ClInclude Include="ChainOfResponsibility\ChainOfResponsibility.h" />
+    <ClInclude Include="Composite\Composite.h" />
+    <ClInclude Include="Decorator\Decorator.h" />
+    <ClInclude Include="Facade\Facade.h" />
+    <ClInclude Include="Flyweight\Flyweight.h" />
+    <ClInclude Include="FrontController\FrontController.h" />
+    <ClInclude Include="Immutable\Immutable.h" />
+    <ClInclude Include="Iterator\Iterator.h" />
+    <ClInclude Include="MedalRanking.h" />
+    <ClInclude Include="Mediator\Mediator.h" />
+    <ClInclude Include="Memento\Memento.h" />
+    <ClInclude Include="Mvc\Mvc.h" />
+    <ClInclude Include="Observer\Observer.h" />
+    <ClInclude Include="Proxy\Proxy.h" />
+    <ClInclude Include="Specification\Specification.h" />
+    <ClInclude Include="State\State.h" />
+    <ClInclude Include="Strategy\Strategy.h" />
+    <ClInclude Include="TemplateMethod\TemplateMethod.h" />
+    <ClInclude Include="Visitor\Visitor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
