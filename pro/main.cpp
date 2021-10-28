@@ -42,9 +42,9 @@ int main()
 	testImmutable();
 	testIterator();
 	testMediator();
-	testMemento();
 	testMVC();
 	testObserver();
+	testMemento();
 	testProxy();
 	testSpecification();
 	testState();
