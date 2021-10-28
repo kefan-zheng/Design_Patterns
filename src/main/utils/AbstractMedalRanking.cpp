@@ -36,28 +36,28 @@ void AbstractMedalRanking::setCountryMedal(string country, int g, int s, int c)
         }
     }
 }
-void AbstractMedalRanking::sortMedal(int policy = PRI_GOLD)
+void AbstractMedalRanking::sortMedal(int policy)
 {
-    auto GoldPol = [](const NationMedal &lhs, const NationMedal &rhs) -> bool
+    auto GoldPol = [](const NationMedal *lhs, const NationMedal *rhs) -> bool
     {
-        if (lhs.gold > rhs.gold)
+        if (lhs->gold > rhs->gold)
             return true;
-        else if (lhs.gold == rhs.gold && lhs.silver > rhs.silver)
+        else if (lhs->gold == rhs->gold && lhs->silver > rhs->silver)
             return true;
-        else if (lhs.gold == rhs.gold && lhs.silver == rhs.silver)
-            return lhs.copper > rhs.copper;
+        else if (lhs->gold == rhs->gold && lhs->silver == rhs->silver)
+            return lhs->copper > rhs->copper;
         return false;
     };
-    auto TotalPol = [](const NationMedal &lhs, const NationMedal &rhs) -> bool
+    auto TotalPol = [](const NationMedal *lhs, const NationMedal *rhs) -> bool
     {
-        int lhsTtl = lhs.gold + lhs.silver + lhs.copper;
-        int rhsTtl = rhs.gold + rhs.silver + rhs.copper;
+        int lhsTtl = lhs->gold + lhs->silver + lhs->copper;
+        int rhsTtl = rhs->gold + rhs->silver + rhs->copper;
         if (lhsTtl > rhsTtl)
             return true;
-        else if (lhsTtl == rhsTtl && lhs.gold > rhs.gold)
+        else if (lhsTtl == rhsTtl && lhs->gold > rhs->gold)
             return true;
-        else if (lhsTtl == rhsTtl && lhs.gold == rhs.gold)
-            return lhs.silver > rhs.silver;
+        else if (lhsTtl == rhsTtl && lhs->gold == rhs->gold)
+            return lhs->silver > rhs->silver;
         return false;
     };
     switch (policy)

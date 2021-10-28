@@ -9,15 +9,18 @@
 #define PRI_TOTAL 2
 using namespace std;
 
-
-//奖牌榜
+/*
+  SingletonMedalRanking: 单例模式创建的奖牌榜
+*/
 class SingletonMedalRanking : public AbstractMedalRanking{
+    friend class MedalRanking;
 public:
     static SingletonMedalRanking& Instance()
     {
         static SingletonMedalRanking instance;
         return instance;
     }
+
 private:
 	SingletonMedalRanking() = default;
 	SingletonMedalRanking(const SingletonMedalRanking& m) = delete;

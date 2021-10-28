@@ -16,7 +16,6 @@ private:
 	friend class Originator;
 	Memento(const MedalRanking& m); //根据奖牌榜实例创建Memento对象
 	MedalRanking getState(); // 获取当前状态
-private:
 	MedalRanking medalState; // 状态(state)信息，是一个奖牌榜实例
 };
 

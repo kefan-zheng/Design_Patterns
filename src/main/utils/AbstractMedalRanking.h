@@ -8,7 +8,7 @@
 #define PRI_TOTAL 2
 using namespace std;
 
-//奖牌榜的一项
+//An item of MedalRanking
 class NationMedal {
 public:
 	std::string country;
@@ -28,6 +28,6 @@ public:
 	void setCountryMedal(string country, int g, int s, int c);
     void sortMedal(int policy = PRI_GOLD);
     void print();
-private:
+protected:
 	vector<NationMedal*> nationList;
 };

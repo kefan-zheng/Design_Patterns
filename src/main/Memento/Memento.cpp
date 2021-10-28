@@ -1,4 +1,5 @@
 #include "Memento.h"
+#include "SingletonMedalRanking.h"
 
 Memento::Memento(const MedalRanking& m) {
 	this->medalState = m;
@@ -15,7 +16,7 @@ void Originator::setState(MedalRanking m) {
 
 void Originator::setState(Memento* m) {
 	this->state = m->getState();
-	cout << "Medal Ranking is updatting.......\n";
+	cout << "Medal Ranking is updating.......\n";
 }
 
 void Originator::showState() {
@@ -62,19 +63,13 @@ void MementoTest(){
 	Originator* originator = new Originator();
 	CareTaker* careTaker = new CareTaker(originator);
 
-	MedalRanking state1;
-	state1.addCountry("China", 38, 32, 18);
-	state1.addCountry("American", 39, 41, 33);
-	state1.addCountry("Japan", 27, 14, 17);
-	state1.addCountry("UK", 22, 21, 22);
-	state1.addCountry("Russia", 20, 28, 23);
-	state1.addCountry("Testcountry", 19, 28, 23);
-	originator->setState(state1);//当前奖牌榜
+	SingletonMedalRanking& singletonMedalStatus = SingletonMedalRanking::Instance();
+	originator->setState(singletonMedalStatus);//当前奖牌榜
 	careTaker->showState();//显示当前奖牌榜
 	careTaker->save();//当前状态存档
 
-	state1.setCountryMedal("Testcountry", 21, 29, 24);
-	originator->setState(state1);//当前奖牌榜
+	singletonMedalStatus.setCountryMedal("Testcountry", 23, 29, 24);
+	originator->setState(singletonMedalStatus);//当前奖牌榜
 	careTaker->showState();//显示当前奖牌榜
 
 	cout << "Some Player are found using illeagal drugs in the drug test.\n";

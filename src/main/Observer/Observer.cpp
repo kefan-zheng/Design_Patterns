@@ -1,23 +1,43 @@
 #include"Observer.h"
 
-ConcreteObserver::ConcreteObserver(string name, MedalRanking const state) :
+ObserverMedia::ObserverMedia(string name, MedalRanking const state) :
 	name(name), state(state) {}
 
-ConcreteObserver::~ConcreteObserver() {}
+ObserverMedia::~ObserverMedia() {}
 
-MedalRanking ConcreteObserver::getState() {
+MedalRanking ObserverMedia::getState() {
 	return state;
 }
 
-void ConcreteObserver::update(Subject* subject) {
+void ObserverMedia::update(Subject* subject) {
+	
 	this->state = subject->getState();
 }
 
-void ConcreteObserver::showState() {
-	cout << "Observer " << this->name << " state:" << endl;
+void ObserverMedia::showState() {
+	cout << "Observer(Media) " << this->name << " state:" << endl;
 	cout << this->name  << " is reporting news: This is the current medal ranking information.\n";
 	this->state.print();
 }
+
+
+ObserverAudience::ObserverAudience(string name):state(ObserverAudienceState::sleepy) {
+	this->name = name;
+}
+
+void ObserverAudience::update(Subject* s) {
+	this->state = ObserverAudienceState::excited;
+}
+
+void ObserverAudience::showState() {
+	if (this->state == ObserverAudienceState::sleepy) {
+		cout << "Observer(Audience) " << this->name << " feels sleepy because the medal ranking has not been changed for a long time.\n";
+	}
+	else if (this->state == ObserverAudienceState::excited) {
+		cout << "Observer(Audience) " << this->name << " feels excited as the medal ranking changed.\n";
+	}
+}
+
 
 void Subject::attach(Observer* observer) {
 	observers.push_back(observer);
@@ -34,46 +54,50 @@ void Subject::notify() {
 	}
 }
 
-MedalRanking ConcreteSubject::getState() {
+SingletonMedalRanking& ConcreteSubject::getState() {
 	return state;
 }
 
-void ConcreteSubject::setState(MedalRanking s) {
-	cout << "Subject set state......" << endl;
-	s.print();
-	this->state = s;
-}
 
 void ObserverTest()
 {
 	//奖牌榜状态
-	MedalRanking state1;
-	state1.addCountry("China", 38, 32, 18);
-	state1.addCountry("American", 39, 41, 33);
-	state1.addCountry("Japan", 27, 14, 17);
-	state1.addCountry("UK", 22, 21, 22);
-	state1.addCountry("Russia", 20, 28, 23);
-	state1.addCountry("Testcountry", 19, 28, 23);
+	SingletonMedalRanking& singletonMedalStatus = SingletonMedalRanking::Instance();
+	singletonMedalStatus.addCountry("China", 38, 32, 18);
+	singletonMedalStatus.addCountry("American", 39, 41, 33);
+	singletonMedalStatus.addCountry("Japan", 27, 14, 17);
+	singletonMedalStatus.addCountry("UK", 22, 21, 22);
+	singletonMedalStatus.addCountry("Russia", 20, 28, 23);
+	singletonMedalStatus.addCountry("Testcountry", 19, 28, 23);
 
-	//两个观察者(媒体)
-	ConcreteObserver observer1("Meida A", state1);
-	ConcreteObserver observer2("Media B", state1);
+	//4个观察者(2个媒体，2个观众)
+	ObserverMedia media1("Tencert News", singletonMedalStatus);
+	ObserverMedia media2("BBC", singletonMedalStatus);
+	ObserverAudience audience1("Zihao Yang");
+	ObserverAudience audience2("Fengyuan cao");
 
 	//添加观察者至subject并显示状态
 	Subject* subject = new ConcreteSubject();
-	subject->attach(&observer1);
-	subject->attach(&observer2);
-	observer1.showState();
-	observer2.showState();
+	subject->attach(&media1);
+	subject->attach(&media2);
+	subject->attach(&audience1);
+	subject->attach(&audience2);
+	cout << "The oringinal states of observers are as follows\n";
+	media1.showState();
+	media2.showState();
+	audience1.showState();
+	audience2.showState();
 
 	//改变subject状态
-	state1.setCountryMedal("Testcountry", 21, 29, 24);
-	subject->setState(state1);
+	singletonMedalStatus.setCountryMedal("Testcountry", 21, 29, 24);
+	cout << "The subject changed and then notified observers...\n";
 	subject->notify();
 
 	//再次展示观察者状态
-	observer1.showState();
-	observer2.showState();
+    media1.showState();
+	media2.showState();
+	audience1.showState();
+	audience2.showState();
 
 	delete subject;
 }
