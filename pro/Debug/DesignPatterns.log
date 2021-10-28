@@ -1,11 +1,2 @@
-﻿  Decorator.cpp
-C:\TongJi\junior1\设计模式\DesignPatterns\Decorator\Decorator.h(48,27): warning C4018: “<”: 有符号/无符号不匹配
-  main.cpp
-C:\TongJi\junior1\设计模式\DesignPatterns\Composite\Composite.h(32,21): warning C4018: “<”: 有符号/无符号不匹配
-C:\TongJi\junior1\设计模式\DesignPatterns\Decorator\Decorator.h(48,27): warning C4018: “<”: 有符号/无符号不匹配
-C:\TongJi\junior1\设计模式\DesignPatterns\Immutable\Immutable.h(12,21): warning C4018: “<”: 有符号/无符号不匹配
-C:\TongJi\junior1\设计模式\DesignPatterns\MedalRanking.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
-C:\TongJi\junior1\设计模式\DesignPatterns\Strategy\Strategy.h(31,21): warning C4018: “<”: 有符号/无符号不匹配
-C:\TongJi\junior1\设计模式\DesignPatterns\Strategy\Strategy.h(42,21): warning C4018: “<”: 有符号/无符号不匹配
-  正在生成代码...
+﻿  Mediator.cpp
   DesignPatterns.vcxproj -> C:\TongJi\junior1\设计模式\DesignPatterns\Debug\DesignPatterns.exe

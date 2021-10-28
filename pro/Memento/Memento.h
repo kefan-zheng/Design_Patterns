@@ -4,7 +4,9 @@
 #include<string>
 #include<iomanip>
 #include<algorithm>
-#include"../MedalRanking.h"
+#include"../utils/AbstractMedalRanking.h"
+#include"../utils/MedalRanking.h"
+#include"../utils/SingletonMedalRanking.h"
 using namespace std;
 
 /*
@@ -16,7 +18,6 @@ private:
 	friend class Originator;
 	Memento(const MedalRanking& m); //根据奖牌榜实例创建Memento对象
 	MedalRanking getState(); // 获取当前状态
-private:
 	MedalRanking medalState; // 状态(state)信息，是一个奖牌榜实例
 };
 
@@ -53,4 +54,4 @@ private:
 	vector<Memento*> history; //此数组用于记录各历史状态
 };
 
-int testMemento();//测试函数
+void testMemento();//测试函数

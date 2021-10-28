@@ -2,8 +2,9 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include"../MedalRanking.h"
-
+#include"../utils/AbstractMedalRanking.h"
+#include"../utils/MedalRanking.h"
+#include"../utils/SingletonMedalRanking.h"
 using namespace std;
 
 class Subject;
@@ -15,26 +16,42 @@ class Subject;
 class Observer {
 public:
 	virtual ~Observer() {}
-
-	virtual MedalRanking getState() = 0;
 	virtual void update(Subject* subject) = 0;
 	virtual void showState() = 0;
 };
 
 /*
- *  ConcreteObserver: 观察者具体类，这里对应的是媒体
+ *  ObserverAudience: 观察者具体类，这里对应的是媒体
  *  媒体的状态就是奖牌榜的信息，当奖牌榜改变时，各家媒体
  */
-class ConcreteObserver : public Observer {
+class ObserverMedia : public Observer {
 public:
-	ConcreteObserver(string name, MedalRanking const state);//根据媒体名字与当前奖牌榜信息初始化
-	~ConcreteObserver();
+	ObserverMedia(string name, MedalRanking const state);//根据媒体名字与当前奖牌榜信息初始化
+	~ObserverMedia();
 	MedalRanking getState(); // 获取媒体状态，即奖牌榜信息
 	void update(Subject* subject); // 奖牌榜信息改变，更新媒体的奖牌榜信息
 	void showState(); // 打印媒体状态，以新闻播报形式呈现
 private:
 	MedalRanking state; // 奖牌榜信息
 	string name; // 媒体名称
+};
+
+
+//观察者(观众)的状态，奖牌榜更新前为sleepy，奖牌榜更新后为excited
+enum class ObserverAudienceState { sleepy=0, excited=1 };
+
+/*
+ *  ObserverAudience: 观察者具体类，这里对应的是观众
+ *  其状态更新的结果是打印相应的信息
+ */
+class ObserverAudience : public Observer {
+public:
+	ObserverAudience(string name);//根据观众名字初始化
+	void update(Subject* s); // 奖牌榜信息改变，观众变兴奋
+	void showState();// 打印当前状态信息
+private:
+	string name; // 观众名字
+	ObserverAudienceState state;
 };
 
 
@@ -46,8 +63,7 @@ public:
 	void attach(Observer* observer); //添加观察者
 	void detach(const int index); //根据序号删除某观察者
 	void notify();//状态改变时，将会通知各观察者
-	virtual MedalRanking getState() = 0; //获取当前状态
-	virtual void setState(const MedalRanking s) = 0; //更新状态
+	virtual SingletonMedalRanking& getState()=0;
 private:
 	vector<Observer*> observers;// 记录所有的观察者
 };
@@ -58,10 +74,10 @@ private:
  */
 class ConcreteSubject :public Subject {
 public:
-	MedalRanking getState();//获取当前状态，直接返回自身存储的奖牌榜实例
-	void setState(MedalRanking s); //更新奖牌榜状态
+	ConcreteSubject():state(SingletonMedalRanking::Instance()) {}
+	SingletonMedalRanking& getState();//获取当前状态，直接返回自身存储的奖牌榜实例
 private:
-	MedalRanking state; //奖牌榜状态
+	SingletonMedalRanking& state; //奖牌榜状态
 };
 
-int testObserver();//测试函数
+void testObserver();//测试函数

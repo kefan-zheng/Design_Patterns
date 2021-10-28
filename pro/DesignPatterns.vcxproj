@@ -26,6 +26,7 @@
     <ClCompile Include="ChainOfResponsibility\ChainOfResponsibility.cpp" />
     <ClCompile Include="Composite\Composite.cpp" />
     <ClCompile Include="Decorator\Decorator.cpp" />
+    <ClCompile Include="Delegation\Delegation.cpp" />
     <ClCompile Include="Facade\Facade.cpp" />
     <ClCompile Include="Flyweight\Flyweight.cpp" />
     <ClCompile Include="FrontController\FrontController.cpp" />
@@ -41,6 +42,7 @@
     <ClCompile Include="State\State.cpp" />
     <ClCompile Include="Strategy\Strategy.cpp" />
     <ClCompile Include="TemplateMethod\TemplateMethod.cpp" />
+    <ClCompile Include="utils\AbstractMedalRanking.cpp" />
     <ClCompile Include="Visitor\Visitor.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -51,7 +53,9 @@
     <ClInclude Include="ChainOfResponsibility\ChainOfResponsibility.h" />
     <ClInclude Include="Composite\Composite.h" />
     <ClInclude Include="Decorator\Decorator.h" />
+    <ClInclude Include="Delegation\Delegation.h" />
     <ClInclude Include="Facade\Facade.h" />
+    <ClInclude Include="FactoryMethod\Swimming.h" />
     <ClInclude Include="Flyweight\Flyweight.h" />
     <ClInclude Include="FrontController\FrontController.h" />
     <ClInclude Include="Immutable\Immutable.h" />
@@ -61,11 +65,15 @@
     <ClInclude Include="Memento\Memento.h" />
     <ClInclude Include="Mvc\Mvc.h" />
     <ClInclude Include="Observer\Observer.h" />
+    <ClInclude Include="Prototype\Prototype.h" />
     <ClInclude Include="Proxy\Proxy.h" />
     <ClInclude Include="Specification\Specification.h" />
     <ClInclude Include="State\State.h" />
     <ClInclude Include="Strategy\Strategy.h" />
     <ClInclude Include="TemplateMethod\TemplateMethod.h" />
+    <ClInclude Include="utils\AbstractMedalRanking.h" />
+    <ClInclude Include="utils\MedalRanking.h" />
+    <ClInclude Include="utils\SingletonMedalRanking.h" />
     <ClInclude Include="Visitor\Visitor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -6,7 +6,9 @@
 #include"ChainOfResponsibility/ChainOfResponsibility.h"
 #include"Composite/Composite.h"
 #include"Decorator/Decorator.h"
+#include"Delegation/Delegation.h"
 #include"Facade/Facade.h"
+#include"FactoryMethod/Swimming.h"
 #include"Flyweight/Flyweight.h"
 #include"FrontController/FrontController.h"
 #include"Immutable/Immutable.h"
@@ -15,6 +17,7 @@
 #include"Memento/Memento.h"
 #include"Mvc/Mvc.h"
 #include"Observer/Observer.h"
+#include"Prototype/Prototype.h"
 #include"Proxy/Proxy.h"
 #include"Specification/Specification.h"
 #include"State/State.h"
@@ -48,5 +51,7 @@ int main()
 	testStrategy();
 	testTemplateMethod();
 	testVisitor();
+	testPrototype();
+
 	return 0;
 }

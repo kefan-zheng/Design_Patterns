@@ -84,6 +84,12 @@
     <ClCompile Include="Visitor\Visitor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Delegation\Delegation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\AbstractMedalRanking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrontController\FrontController.h">
@@ -153,6 +159,24 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Iterator\Iterator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryMethod\Swimming.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Delegation\Delegation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype\Prototype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\AbstractMedalRanking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\MedalRanking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SingletonMedalRanking.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
