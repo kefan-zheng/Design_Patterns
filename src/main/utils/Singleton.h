@@ -8,6 +8,17 @@
 #define PRI_TOTAL 2
 using namespace std;
 
+class AbstractMedalRanking
+{
+public:
+	void addCountry(string country, int g, int s, int c);
+	void setCountryMedal(string country, int g, int s, int c);
+    void sortMedal(int policy = PRI_GOLD);
+    void print();
+private:
+	vector<NationMedal*> nationList;
+};
+
 //奖牌榜的一项
 class NationMedal {
 public:
@@ -22,22 +33,15 @@ public:
 };
 
 //奖牌榜
-class MedalRanking {
+class SingletonMedalRanking : public AbstractMedalRanking{
 public:
-    static MedalRanking& Instance()
+    static SingletonMedalRanking& Instance()
     {
-        static MedalRanking instance;
+        static SingletonMedalRanking instance;
         return instance;
     }
 private:
-	vector<NationMedal*> nationList;
-	MedalRanking() = default;
-	MedalRanking(const MedalRanking& m) = delete;
-	MedalRanking& operator=(const MedalRanking& m) = delete;
-
-	void addCountry(string country, int g, int s, int c);
-	void setCountryMedal(string country, int g, int s, int c);
-
-    void sortMedal(int policy = PRI_GOLD);
-    void print();
+	SingletonMedalRanking() = default;
+	SingletonMedalRanking(const SingletonMedalRanking& m) = delete;
+	SingletonMedalRanking& operator=(const SingletonMedalRanking& m) = delete;
 };
