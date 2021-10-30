@@ -24,6 +24,7 @@
     <ClCompile Include="Bridge\Bridge.cpp" />
     <ClCompile Include="Builder\Builder.cpp" />
     <ClCompile Include="ChainOfResponsibility\ChainOfResponsibility.cpp" />
+    <ClCompile Include="Command\Command.cpp" />
     <ClCompile Include="Composite\Composite.cpp" />
     <ClCompile Include="Decorator\Decorator.cpp" />
     <ClCompile Include="Delegation\Delegation.cpp" />
@@ -31,17 +32,20 @@
     <ClCompile Include="Flyweight\Flyweight.cpp" />
     <ClCompile Include="FrontController\FrontController.cpp" />
     <ClCompile Include="Immutable\Immutable.cpp" />
+    <ClCompile Include="Interpreter\Interpreter.cpp" />
     <ClCompile Include="Iterator\Iterator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mediator\Mediator.cpp" />
     <ClCompile Include="Memento\Memento.cpp" />
     <ClCompile Include="Mvc\Mvc.cpp" />
     <ClCompile Include="Observer\Observer.cpp" />
+    <ClCompile Include="Prototype\Prototype.cpp" />
     <ClCompile Include="Proxy\Proxy.cpp" />
     <ClCompile Include="Specification\Specification.cpp" />
     <ClCompile Include="State\State.cpp" />
     <ClCompile Include="Strategy\Strategy.cpp" />
     <ClCompile Include="TemplateMethod\TemplateMethod.cpp" />
+    <ClCompile Include="TransferObject\TransferObject.cpp" />
     <ClCompile Include="utils\AbstractMedalRanking.cpp" />
     <ClCompile Include="Visitor\Visitor.cpp" />
   </ItemGroup>
@@ -51,6 +55,7 @@
     <ClInclude Include="Bridge\Bridge.h" />
     <ClInclude Include="Builder\Builder.h" />
     <ClInclude Include="ChainOfResponsibility\ChainOfResponsibility.h" />
+    <ClInclude Include="Command\Command.h" />
     <ClInclude Include="Composite\Composite.h" />
     <ClInclude Include="Decorator\Decorator.h" />
     <ClInclude Include="Delegation\Delegation.h" />
@@ -59,8 +64,8 @@
     <ClInclude Include="Flyweight\Flyweight.h" />
     <ClInclude Include="FrontController\FrontController.h" />
     <ClInclude Include="Immutable\Immutable.h" />
+    <ClInclude Include="Interpreter\Interpreter.h" />
     <ClInclude Include="Iterator\Iterator.h" />
-    <ClInclude Include="MedalRanking.h" />
     <ClInclude Include="Mediator\Mediator.h" />
     <ClInclude Include="Memento\Memento.h" />
     <ClInclude Include="Mvc\Mvc.h" />
@@ -71,6 +76,7 @@
     <ClInclude Include="State\State.h" />
     <ClInclude Include="Strategy\Strategy.h" />
     <ClInclude Include="TemplateMethod\TemplateMethod.h" />
+    <ClInclude Include="TransferObject\TransferObject.h" />
     <ClInclude Include="utils\AbstractMedalRanking.h" />
     <ClInclude Include="utils\MedalRanking.h" />
     <ClInclude Include="utils\SingletonMedalRanking.h" />
