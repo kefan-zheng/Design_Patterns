@@ -112,7 +112,7 @@ public:
 
 
 //抽象工厂
-template<class T>
+
 class AbstractFactory
 {
 public:
@@ -120,7 +120,7 @@ public:
 };
 
 //乒乓球工厂，继承自抽象工厂
-class TableTennisFactory : public AbstractFactory<TableTennisGameProduct>
+class TableTennisFactory : public AbstractFactory
 {
 public:
     ~TableTennisFactory() {}
@@ -129,7 +129,8 @@ public:
     }
 };
 //跑步工厂，继承自抽象工厂
-class RunningFactory {
+class RunningFactory :public AbstractFactory
+{
 public:
     ~RunningFactory() {}
     RunningGameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState,int num) {
