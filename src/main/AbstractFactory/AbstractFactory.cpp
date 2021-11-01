@@ -35,33 +35,24 @@ void RunningGameProduct::setelapsedTime(double para)
 
 void RunningGameProduct::setsportsmanState(vector<bool> para)
 {
+    sportsmanState.clear();
     this->sportsmanState = para;
 }
 
 void RunningGameProduct::setdistanceTravelled(vector<double> para)
 {
+    distanceTravelled.clear();
     this->distanceTravelled = para;
 }
 
 void RunningGameProduct::setscore(vector<double> para)
 {
+    score.clear();
     this->score = para;
 }
 
 
-const int* TableTennisGameProduct::getbigScore()
-{
-    return this->bigScore;
-}
-const int* TableTennisGameProduct::getsmallScore()
-{
-    return this->smallScore;
-}
 
-const bool* TableTennisGameProduct::getlocation()
-{
-    return this->location;
-}
 
 
 

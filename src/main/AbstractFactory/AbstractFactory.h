@@ -40,6 +40,25 @@ public:
     void setContestState(int state) {
         contestState = state;
     }
+    //跑步的虚函数
+    //获取信息函数
+    virtual const double getelapsedTime() { return 0; }
+    virtual const double getdistance() { return 0; }
+    virtual const vector<bool> getsportsmanState() { vector<bool>null; return null; }
+    virtual const vector<double> getdistanceTravelled() { vector<double>null; return null; }
+    virtual const vector<double> getscore() { vector<double>null; return null; }
+    //设置函数
+    virtual void setelapsedTime(double para){}
+    virtual void setsportsmanState(vector<bool> para){}
+    virtual void setdistanceTravelled(vector<double> para){}
+    virtual void setscore(vector<double> para){}
+
+    //乒乓球的虚函数
+    virtual int getScore1() { return 0; }
+    virtual int getScore2() { return 0; }
+        
+    //设置函数
+    virtual void setScore(int i) {}
 };
 
 //跑步比赛
@@ -57,56 +76,47 @@ private:
     vector<double> score;
 public:
     ~RunningGameProduct() {}
-    RunningGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState, int num) :
+    RunningGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
         GameProduct(cN, sT, cS, sName, sNation, cState) {
         elapsedTime = 0;
         distance = 100;
-        for (int i = 0; i < num; ++i)sportsmanState.push_back(0), distanceTravelled.push_back(0), score.push_back(0);
+        for (int i = 0; i < sName.size(); ++i)sportsmanState.push_back(0), distanceTravelled.push_back(0), score.push_back(0);
     }
     //获取信息函数
-    const double getelapsedTime();
-    const double getdistance();
-    const vector<bool> getsportsmanState();
-    const vector<double> getdistanceTravelled();
-    const vector<double> getscore();
+    virtual const double getelapsedTime();
+    virtual const double getdistance();
+    virtual const vector<bool> getsportsmanState();
+    virtual const vector<double> getdistanceTravelled();
+    virtual const vector<double> getscore();
     //设置函数
-    void setelapsedTime(double para);
-    void setsportsmanState(vector<bool> para);
-    void setdistanceTravelled(vector<double> para);
-    void setscore(vector<double> para);
+    virtual void setelapsedTime(double para);
+    virtual void setsportsmanState(vector<bool> para);
+    virtual void setdistanceTravelled(vector<double> para);
+    virtual void setscore(vector<double> para);
+
 };
 
 //乒乓球比赛
 class TableTennisGameProduct : public GameProduct
 {
 private:
-    //大比分
-    int bigScore[2];
-    //小比分
-    int smallScore[2];
-    //运动员相对球桌的位置，false代表站在左边，true代表站在右边
-    bool location[2];
+    int Score[2];
 public:
     ~TableTennisGameProduct() {};
     TableTennisGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
         GameProduct(cN, sT, cS, sName, sNation, cState) {
-        bigScore[0] = bigScore[1] = smallScore[0] = smallScore[1] = 0;
-        location[0] = location[1] = false;
+       Score[0] = Score[1] = 0;
     }
-    const int* getbigScore();
-    const int* getsmallScore();
-    const bool* getlocation();
+    virtual int getScore1() {
+        return Score[0];
+    }
+    virtual int getScore2() {
+        return Score[1];
+    }
     //设置函数
-    void setbigScore(int i) { 
+    virtual void setScore(int i) { 
         if (i != 0 && i != 1) { return; }
-        ++bigScore[i]; 
-    }
-    void setsmallScore(int i) { 
-        if (i != 0 && i != 1) { return; }
-        ++smallScore[i]; 
-    }
-    void flipLocation() {
-        swap(location[0], location[1]);
+        ++Score[i]; 
     }
 };
 
@@ -117,6 +127,7 @@ class AbstractFactory
 {
 public:
     virtual ~AbstractFactory() {}
+    virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) = 0;
 };
 
 //乒乓球工厂，继承自抽象工厂
@@ -124,7 +135,7 @@ class TableTennisFactory : public AbstractFactory
 {
 public:
     ~TableTennisFactory() {}
-    TableTennisGameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) {
+    virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) {
         return new TableTennisGameProduct(cN, sT, cS, sName, sNation, cState);
     }
 };
@@ -133,7 +144,7 @@ class RunningFactory :public AbstractFactory
 {
 public:
     ~RunningFactory() {}
-    RunningGameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState,int num) {
-        return new RunningGameProduct(cN, sT, cS, sName, sNation, cState, num);
+    virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) {
+        return new RunningGameProduct(cN, sT, cS, sName, sNation, cState);
     }
 };
