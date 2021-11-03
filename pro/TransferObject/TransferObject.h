@@ -21,13 +21,17 @@ class AthleteVO
 private:
 	string name;
 	int serialNo;//编号
-	int medals;//奖牌数
+	int win;
+	int fail;
+	double winRate;//胜率
 public:
-	AthleteVO(string name, int serialNo, int medals = 0)
+	AthleteVO(string name, int serialNo, int win, int fail)
 	{
 		this->name = name;
 		this->serialNo = serialNo;
-		this->medals = medals;
+		this->win = win;
+		this->fail = fail;
+		this->winRate = (double)win / (win + fail);
 	}
 	string getName()
 	{
@@ -45,13 +49,39 @@ public:
 	{
 		this->serialNo = serialNo;
 	}
-	int getMedals()
+	int getWin()
 	{
-		return this->medals;
+		return this->win;
 	}
-	void setMedals(int medals)
+	void setWin(int win)
 	{
-		this->medals = medals;
+		this->win = win;
+	}
+	int getFail()
+	{
+		return this->fail;
+	}
+	void setFail (int fail)
+	{
+		this->fail = fail;
+	}
+	int getWinRate()
+	{
+		return this->winRate;
+	}
+	void setWinRate(double winRate)
+	{
+		this->winRate = winRate;
+	}
+	void updateWinRate(string result)
+	{
+		if (result == "win") {
+			this->win++;
+		}
+		else if (result == "fail") {
+			this->fail++;
+		}
+		this->winRate = (double)this->win / (this->win + this->fail);
 	}
 };
 
@@ -92,13 +122,17 @@ public:
 		}
 	}
 
-	// 从数据库中更改一个运动员的奖牌数
+	// 从数据库中更新一个运动员的信息(胜率)（一场比赛后调用）
 	void updateAthlete(AthleteVO athlete)
 	{
 		for (vector<AthleteVO>::iterator iter = athletes.begin(); iter != athletes.end(); iter++) {
 			if (iter->getSerialNo() == athlete.getSerialNo()) {
-				iter->setMedals(athlete.getMedals());
-				cout << "Athlete: Serial No " << athlete.getSerialNo() << ", updated in the database." << endl;
+				iter->setName(athlete.getName());
+				iter->setSerialNo(athlete.getSerialNo());
+				iter->setWin(athlete.getWin());
+				iter->setFail(athlete.getFail());
+				iter->setWinRate(athlete.getWinRate());
+				cout << "Serial No " << athlete.getSerialNo() << ", updated in the database." << endl;
 				break;
 			}
 		}
@@ -116,7 +150,7 @@ public:
 				return *iter;
 			}
 		}
-		return AthleteVO("error", -1);
+		return AthleteVO(NULL, -1, -1, -1);
 	}
 };
 
