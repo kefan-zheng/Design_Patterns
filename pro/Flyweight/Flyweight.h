@@ -28,6 +28,10 @@ public:
 	FlyweightFactory();
 	virtual ~FlyweightFactory();
 	virtual ConcreteCompetition* GetFlyweight(string key);
+	map<string ,ConcreteCompetition*>* getFlyWeights()
+       {
+        return  &Flyweights;
+       }
 };
 
 int testFlyweight();
