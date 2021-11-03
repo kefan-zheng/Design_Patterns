@@ -195,4 +195,7 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Immutable\input.txt" />
+  </ItemGroup>
 </Project>
