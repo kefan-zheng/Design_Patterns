@@ -3,7 +3,17 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<random>
+#include "../AbstractFactory/AbstractFactory.h"
 using namespace std;
+
+class ContestComponent;
+
+//比赛窗口
+class ContestWindow {
+public:
+    void SetContents(ContestComponent* contents);
+};
 
 class ContestComponent {
 public:
@@ -13,58 +23,48 @@ private:
 
 };
 
-//比赛窗口
-class ContestWindow {
-public:
-    void SetContents(ContestComponent* contents)
-    {
-        contents->Draw();
-    }
-};
 
 
 class BasicInfo :public ContestComponent {
 public:
-    BasicInfo(string cN, string sN, string cS, int cState, double eT, vector<string> sName, vector<string>sNation)
-        : contestName(cN), startTime(sN), contestSite(cS), contestState(cState), elapsedTime(eT), sportsmanName(sName), sportsmanNation(sNation) {}
+    BasicInfo(GameProduct*_gp):GP(_gp){}
     virtual void Draw() {
-        cout << contestName;
-        if (contestState == 0) {
-            cout << "未开始！\n";
+        cout << GP->getcontestName();
+        switch (GP->getcontestState()) {
+        case 0:
+            cout << " has not begun！\n";
+            break;
+        case 1:
+            cout << " is in progress！\n";
+            break;
+        case 2:
+            cout << " is suspended！\n";
+            break;
+        case 3:
+            cout << " is over！\n";
+            break;
         }
-        if (contestState == 1) {
-            cout << "正在进行！\n";
-        }
-        else if (contestState == 2) {
-            cout << "处于暂停中！\n";
-        }
-        else if (contestState == 3) {
-            cout << "已经结束！\n";
-        }
-        cout << "开始时间为：" << startTime << endl;
-        if (contestState)cout << "比赛已经进行：" << elapsedTime << endl;
-        cout << "比赛场所在：" << contestSite << endl;
-        cout << "参赛名单为：\n";
+        cout << "Start time of the game：" << GP->getstartTime() << endl;
+        cout << "Site：" << GP->getcontestSite() << endl;
+        cout << "Sportsman list：\n";
+        vector<string>sportsmanName = GP->getsportsmanName();
+        vector<string>sportsmanNation = GP->getsportsmanNation();
         for (int i = 0; i < sportsmanName.size(); ++i) {
-            cout << "来自 " << sportsmanNation[i] << " 的 " << sportsmanName[i] << "; ";
+            cout <<  sportsmanName[i] << " from " << sportsmanNation[i] << "; ";
             if ((i + 1) % 3 == 0)cout << endl;
         }
         cout << endl;
     }
 private:
-    string contestName;
-    string startTime;
-    string contestSite;
-    int contestState;//0表示未开始，1表示正在进行，2表示在比赛暂停，3表示比赛结束
-    double elapsedTime;
-    vector<string>sportsmanName;
-    vector<string>sportsmanNation;
+    GameProduct* GP;
 };
+
+
 
 
 class Decorator : public ContestComponent {
 public:
-    Decorator(ContestComponent* cc) :_component(cc) {}
+    Decorator(ContestComponent*);
 
     virtual void Draw() {
         _component->Draw();
@@ -75,38 +75,60 @@ private:
 };
 
 
+
+
 class ScoreComparison :public Decorator {
 public:
-    ScoreComparison(ContestComponent* cc, int SL, int SR, int sL, int sR) :Decorator(cc),
-        ScoreLeft(SL), ScoreRight(SR),//大比分
-        scoreLeft(sL), scoreRight(sR) {}
+
+    ScoreComparison(ContestComponent* cc,GameProduct* _gp) :Decorator(cc), GP(_gp) {};
     virtual void Draw() {
         Decorator::Draw();
-        cout << "当前比分为：" << scoreLeft << "(" << ScoreLeft << "):" << scoreRight << "(" << ScoreRight << ")" << endl;
+        vector<string> name;
+        name = GP->getsportsmanName();
+        int Score1 = GP->getScore1();
+        int Score2 = GP->getScore2();
+        cout << "Score: " << name[0] << " " << Score1 << " : " << Score2 << " " << name[1] << endl;
     }
 private:
-    int ScoreLeft, ScoreRight,//大比分
-        scoreLeft, scoreRight;//小比分
+    GameProduct* GP;
+
 
 };
-
+struct runningSportsman {
+    string name;
+    string nation;
+    double distance;
+    double velocity;
+    bool operator<(runningSportsman& r) {
+        return velocity > r.velocity;
+    }
+};
 class Rankings :public Decorator {
 public:
-    Rankings(ContestComponent* cc, vector<string>r) :Decorator(cc), _rankings(r) {}
+    Rankings(ContestComponent* cc, GameProduct* _gp) :Decorator(cc), GP(_gp) {
+    }
 
     virtual void Draw() {
         Decorator::Draw();
-        cout << "当前排名：\n";
-        for (auto i : _rankings) {
-            cout << i << endl;
+        cout << "Current ranking：\n";
+
+        vector<runningSportsman>sportsman;
+        vector<string>name = GP->getsportsmanName();
+        vector<string>nation = GP->getsportsmanNation();
+        vector<double>Score = GP->getscore();
+        vector<double>distance = GP->getdistanceTravelled();
+        double time = GP->getelapsedTime();
+        for (int i = 0; i < name.size(); ++i) {
+            sportsman.push_back(runningSportsman{ name[i],nation[i],distance[i],(Score[i] < 1e-6 ? distance[i] / (time+1e-6) : Score[i]) });
         }
-    }
-    void reviseRanking(vector<string>v) {
-        _rankings.clear();
-        _rankings = v;
+        sort(sportsman.begin(), sportsman.end());
+        for (auto i : sportsman)
+            cout << i.name << " from " << i.nation << " has covered " << i.distance << ", whose velocity is " << i.velocity << endl;
     }
 private:
-    vector<string>_rankings;
+    GameProduct* GP;
 };
 
-int testDecorator();
+
+
+void testDecorator();

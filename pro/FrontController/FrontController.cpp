@@ -5,11 +5,7 @@ using namespace std;
 
 void Dispatcher::dispatch(string request)
 {
-	if (request == "abstractfactory")
-	{
-		testAbstractFactory();
-	}
-	else if(request == "adapter")
+	if(request == "adapter")
 	{
 		testAdaptor();
 	}

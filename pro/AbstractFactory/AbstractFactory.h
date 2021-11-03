@@ -1,5 +1,6 @@
 #pragma once
 #include<vector>
+#include<algorithm>
 #include <iostream>
 
 using namespace std;
@@ -7,7 +8,7 @@ using namespace std;
  //单人比赛
 class GameProduct
 {
-public:
+private:
     string contestName;
     string startTime;
     string contestSite;
@@ -15,15 +16,47 @@ public:
     vector<string>sportsmanNation;
     //比赛状态变量，0表示未开始，1表示正在进行，2表示比赛暂停，3表示比赛结束
     int contestState;
-    //析构函数
-    virtual ~GameProduct() {}
-    //纯虚函数
-    virtual const string getcontestName() = 0;
-    virtual const string getstartTime() = 0;
-    virtual const string getcontestSite() = 0;
-    virtual const vector<string> getsportsmanName() = 0;
-    virtual const vector<string> getsportsmanNation() = 0;
-    virtual const int getcontestState() = 0;
+public:
+    GameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
+        contestName(cN), startTime(sT), contestSite(cS), sportsmanName(sName), sportsmanNation(sNation), contestState(cState) {}
+    const string getcontestName() {
+        return contestName;
+    }
+    const string getstartTime() {
+        return startTime;
+    }
+    const string getcontestSite() {
+        return contestSite;
+    }
+    const vector<string> getsportsmanName() {
+        return sportsmanName;
+    }
+    const vector<string> getsportsmanNation() {
+        return sportsmanNation;
+    }
+    const int getcontestState() {
+        return contestState;
+    };
+    void setContestState(int state) {
+        contestState = state;
+    }
+    //跑步的虚函数
+    //获取信息函数
+    virtual const double getelapsedTime() { return 0; }
+    virtual const double getdistance() { return 0; }
+    virtual const vector<double> getdistanceTravelled() { vector<double>null; return null; }
+    virtual const vector<double> getscore() { vector<double>null; return null; }
+    //设置函数
+    virtual void setelapsedTime(double para){}
+    virtual void setdistanceTravelled(vector<double> para){}
+    virtual void setscore(vector<double> para){}
+
+    //乒乓球的虚函数
+    virtual int getScore1() { return 0; }
+    virtual int getScore2() { return 0; }
+        
+    //设置函数
+    virtual void setScore(int i) {}
 };
 
 //跑步比赛
@@ -41,78 +74,73 @@ private:
     vector<double> score;
 public:
     ~RunningGameProduct() {}
-    //纯虚函数的实现
-    const string getcontestName();
-    const string getstartTime();
-    const string getcontestSite();
-    const vector<string> getsportsmanName();
-    const vector<string> getsportsmanNation();
-    const int getcontestState();
-
-    const double getelapsedTime();
-    const double getdistance();
-    const vector<bool> getsportsmanState();
-    const vector<double> getdistanceTravelled();
-    const vector<double> getscore();
-
+    RunningGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
+        GameProduct(cN, sT, cS, sName, sNation, cState) {
+        elapsedTime = 0;
+        distance = 100;
+        for (int i = 0; i < sName.size(); ++i)sportsmanState.push_back(0), distanceTravelled.push_back(0), score.push_back(0);
+    }
+    //获取信息函数
+    virtual const double getelapsedTime();
+    virtual const double getdistance();
+    virtual const vector<double> getdistanceTravelled();
+    virtual const vector<double> getscore();
     //设置函数
-    void setelapsedTime(double para);
-    void setsportsmanState(vector<bool> para);
-    void setdistanceTravelled(vector<double> para);
-    void setscore(vector<double> para);
-    void setcontestState(int para);
+    virtual void setelapsedTime(double para);
+    virtual void setdistanceTravelled(vector<double> para);
+    virtual void setscore(vector<double> para);
+
 };
 
 //乒乓球比赛
 class TableTennisGameProduct : public GameProduct
 {
 private:
-    //大比分
-    int bigScore[2];
-    //小比分
-    int smallScore[2];
-    //运动员相对球桌的位置，false代表站在左边，true代表站在右边
-    bool location[2];
+    int Score[2];
 public:
-    ~TableTennisGameProduct() {}
-    //纯虚函数的实现
-    const string getcontestName();
-    const string getstartTime();
-    const string getcontestSite();
-    const vector<string> getsportsmanName();
-    const vector<string> getsportsmanNation();
-    const int getcontestState();
-
-    const int* getbigScore();
-    const int* getsmallScore();
-    const bool getlocation();
+    ~TableTennisGameProduct() {};
+    TableTennisGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
+        GameProduct(cN, sT, cS, sName, sNation, cState) {
+       Score[0] = Score[1] = 0;
+    }
+    virtual int getScore1() {
+        return Score[0];
+    }
+    virtual int getScore2() {
+        return Score[1];
+    }
     //设置函数
-    void setbigScore(int para);
-    void setsmallScore(int para);
-    void setlocation(bool para);
-    void setcontestState(int para);
+    virtual void setScore(int i) { 
+        if (i != 0 && i != 1) { return; }
+        ++Score[i]; 
+    }
 };
 
 
 //抽象工厂
+
 class AbstractFactory
 {
 public:
     virtual ~AbstractFactory() {}
-    //两个产品
-    virtual RunningGameProduct* createRunningGameProduct() = 0;
-    virtual TableTennisGameProduct* createTableTennisGameProduct() = 0;
+    virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) = 0;
 };
 
 //乒乓球工厂，继承自抽象工厂
-class GameFactory : public AbstractFactory
+class TableTennisFactory : public AbstractFactory
 {
 public:
-    ~GameFactory() {}
-
-    RunningGameProduct* createRunningGameProduct();
-
-    TableTennisGameProduct* createTableTennisGameProduct();
+    ~TableTennisFactory() {}
+    virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) {
+        return new TableTennisGameProduct(cN, sT, cS, sName, sNation, cState);
+    }
 };
-
-int testAbstractFactory();
+//跑步工厂，继承自抽象工厂
+class RunningFactory :public AbstractFactory
+{
+public:
+    ~RunningFactory() {}
+    virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) {
+        return new RunningGameProduct(cN, sT, cS, sName, sNation, cState);
+    }
+};
