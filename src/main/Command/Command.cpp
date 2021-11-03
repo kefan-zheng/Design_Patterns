@@ -1,7 +1,7 @@
-#include "Command.h"
+#include "ÀºÇò¼Æ·Ö.h"
 
 
-int main1()
+int main()
 {
 	Point* receiver = new Point();
 	ScoreForm* scoreform = new ScoreForm();

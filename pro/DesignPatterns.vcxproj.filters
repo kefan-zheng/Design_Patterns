@@ -99,6 +99,9 @@
     <ClCompile Include="TransferObject\TransferObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Prototype\Prototype.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrontController\FrontController.h">
@@ -194,8 +197,5 @@
     <ClInclude Include="TransferObject\TransferObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Immutable\input.txt" />
   </ItemGroup>
 </Project>

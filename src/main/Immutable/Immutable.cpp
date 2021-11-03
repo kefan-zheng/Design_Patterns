@@ -1,14 +1,11 @@
 #include "Immutable.h"
 int main() {
-	cout << "This is a brief introduction to our stadium named Bird's Nest: \n";
-	string s[3];
-	ifstream input("input.txt");
-	if (!input) {
-		cout << "fail to open input.txt! Program exits!\n";
-		return 0;
-	}
-	for (int i = 0; i < 3; ++i)getline(input, s[i]);
-	Stadium stadium(s[0], s[1], s[2]);
-	stadium.show();
+	vector<string>events;
+	string s[] = { "Artistic swimming","Diving","Marathon swimming","Swimming","Water polo","3-on-3 basketball"
+	,"Basketball","Volleyball","Freestyle wrestling","Badminton","Boxing","Breaking","Football","Golf","Weightlifting",
+	"Table tennis","Sport climbing","Sailing","Rugby sevens","Judo","Shooting","Baseball" };
+	for (int i = 0; i < s->size(); ++i)events.push_back(s[i]);
+	EventList e(events);
+	e.show();
 	return 0;
 }

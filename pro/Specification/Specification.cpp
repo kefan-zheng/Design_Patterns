@@ -1,7 +1,5 @@
 #include"Specification.h"
 #include<iostream>
-#include<string>
-#include<vector>
 using namespace std;
 /*in this parttern ,we can query athletes through different constraints */
 //举重比赛：姓名、年龄、公斤级、性别、国籍
@@ -77,21 +75,21 @@ vector<Athlete*>AthleteExecute::searchAthletes(IAthleteProvide* IAthlete)
 	}
 	return Athletes;
 }
-void testSpecification()
+int testSpecification()
 {
 	//内存数据
 	vector<Athlete* >Athletes;
-	Athlete* A1 = new Athlete("Tim", 22, 73, "male", "U.K.");
-	Athlete* A2 = new Athlete("Mike", 29, 73, "male", "U.K.");
-	Athlete* A3 = new Athlete("Tom", 32, 73, "male", "U.S.");
-	Athlete* A4 = new Athlete("Jack", 28, 73, "male", "U.S.");
-	Athlete* A5 = new Athlete("Lin ", 21, 73, "male", "China");
-	Athlete* A6 = new Athlete("Chen", 22, 61, "female", "China");
-	Athlete* A7 = new Athlete("Jee", 19, 49, "female", "Japen");
-	Athlete* A8 = new Athlete("Cathy", 18, 49, "female", "Germany");
-	Athlete* A9 = new Athlete("Merry", 20, 61, "female", "Cananda");
-	Athlete* A10 = new Athlete("Hert", 25, 59, "female", "France");
-	Athlete* A11 = new Athlete("Katty", 25, 61, "female", "South Korea");
+	Athlete* A1 = new Athlete("1", 22, 61, "male", "U.K.");
+	Athlete* A2 = new Athlete("2", 29, 61, "male", "U.K.");
+	Athlete* A3 = new Athlete("3", 32, 73, "male", "U.S.");
+	Athlete* A4 = new Athlete("4", 28, 73, "male", "U.S.");
+	Athlete* A5 = new Athlete("5", 21, 109, "male", "China");
+	Athlete* A6 = new Athlete("6", 22, 61, "male", "China");
+	Athlete* A7 = new Athlete("7", 19, 49, "female", "Japen");
+	Athlete* A8 = new Athlete("8", 18, 49, "female", "Germany");
+	Athlete* A9 = new Athlete("9", 20, 61, "female", "Cananda");
+	Athlete* A10 = new Athlete("10", 25, 59, "female", "France");
+	Athlete* A11 = new Athlete("11", 25, 73, "female", "South Korea");
 	Athletes.push_back(A1);
 	Athletes.push_back(A2);
 	Athletes.push_back(A3);
@@ -121,40 +119,38 @@ void testSpecification()
 	int size4 = Athlete4.size();
 	int size5 = Athlete5.size();
 	int i = 0;  //循环计数
-	cout << "Weightlifting competition now in progress !" << endl;
-	cout << "Now let’s look at the athletes information !" << endl;
-	cout << "Male weightlifters："<<endl;
+	cout << "男子举重运动员有："<<endl;
 	for (i = 0; i < size1; i++)
 	{
-		cout << "name：" << Athlete1.at(i)->_name << " age：" << Athlete1.at(i)->_age << " kilogram：" << Athlete1.at(i)->_Kilogram
-			<< " nation：" << Athlete1.at(i)->_nation << endl;
+		cout << "姓名：" << Athlete1.at(i)->_name << " 年龄：" << Athlete1.at(i)->_age << " 公斤级：" << Athlete1.at(i)->_Kilogram
+			<< " 国籍：" << Athlete1.at(i)->_nation << endl;
 	}
-	cout << "Female weightlifters：" << endl;
+	cout << "女子举重运动员有：" << endl;
 	for (i = 0; i < size2; i++)
 	{
-		cout << "name：" << Athlete2.at(i)->_name << " age：" << Athlete2.at(i)->_age << " kilogram：" << Athlete2.at(i)->_Kilogram
-			<< " nation：" << Athlete2.at(i)->_nation << endl;
+		cout << "姓名：" << Athlete2.at(i)->_name << " 年龄：" << Athlete2.at(i)->_age << " 公斤级：" << Athlete2.at(i)->_Kilogram
+			<< " 国籍：" << Athlete2.at(i)->_nation << endl;
 	}
-	cout << "Now playing in the 73kg category !" << endl;
-	cout << "73 kg weightlifter：" << endl;
+	cout << "73公斤级举重运动员有：" << endl;
 	for (i = 0; i < size3; i++)
 	{
-		cout << "name：" << Athlete3.at(i)->_name << " age：" << Athlete3.at(i)->_age << " gender：" << Athlete3.at(i)->_gender
-			<< " nation：" << Athlete3.at(i)->_nation << endl;
+		cout << "姓名：" << Athlete3.at(i)->_name << " 年龄：" << Athlete3.at(i)->_age << " 性别：" << Athlete3.at(i)->_gender
+			<< " 国籍：" << Athlete3.at(i)->_nation << endl;
 	}
-	cout << "Now playing in the 61kg category !" << endl;
-	cout << "61 kg weightlifter：" << endl;
+	cout << "61公斤级举重运动员有：" << endl;
 	for (i = 0; i < size4; i++)
 	{
-		cout << "name：" << Athlete4.at(i)->_name << " age：" << Athlete4.at(i)->_age << " gender：" << Athlete4.at(i)->_gender
-			<< " nation：" << Athlete4.at(i)->_nation << endl;
+		cout << "姓名：" << Athlete4.at(i)->_name << " 年龄：" << Athlete4.at(i)->_age << " 性别：" << Athlete4.at(i)->_gender
+			<< " 国籍：" << Athlete4.at(i)->_nation << endl;
 	}
-	cout << endl;
-	cout << "The game is over, the champion is ";
-	cout << "Chinese weightlifter：" << endl;
+	cout << "中国举重运动员有：" << endl;
 	for (i = 0; i < size5; i++)
 	{
-		cout << "name：" << Athlete5.at(i)->_name << " age：" << Athlete5.at(i)->_age << " kilogram：" << Athlete5.at(i)->_Kilogram
-			<< " gender：" << Athlete5.at(i)->_gender<< endl;
+		cout << "姓名：" << Athlete5.at(i)->_name << " 年龄：" << Athlete5.at(i)->_age << " 公斤级：" << Athlete5.at(i)->_Kilogram
+			<< " 性别：" << Athlete5.at(i)->_gender<< endl;
 	}
+
+	cout << endl;
+
+	return 0;
 }

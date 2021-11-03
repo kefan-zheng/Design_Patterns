@@ -1,5 +1,5 @@
 #include "Mediator.h"
-#include "../Command/Command.h"
+
 using namespace std;
 
 int CirtainPlayer::idCount = 0;
@@ -144,25 +144,6 @@ void testMediator() {
 	game->add(p9);
 	game->add(p10);
 
-	cout << "\nGame start!\n";
-	Point* receiver = new Point();
-	ScoreForm* scoreform = new ScoreForm();
-
-	scoreform->compute(new ScoreCommand(receiver, 0, 2));// 主队得2分
-	scoreform->compute(new ScoreCommand(receiver, 0, 3));// 主队得3分
-	scoreform->compute(new ScoreCommand(receiver, 1, 2));// 客队得2分
-
 	p1->send("I ask to pause the game!");//p1要求停止比赛，通知裁判。裁判同意后要求其他运动员也停下
-	
-	
-	scoreform->undo();// 撤销上一次计分
-	scoreform->compute(new ScoreCommand(receiver, 1, 1));// 客队得1分
-	scoreform->compute(new ScoreCommand(receiver, 1, 3));// 客队得3分
-
 	p7->send("Please pause the game right now!");//p7要求停止比赛，通知裁判。裁判同意后要求其他运动员也停下
-
-	// 撤销上一次计分
-	scoreform->undo();
-	scoreform->redo();
-	delete scoreform;
 }

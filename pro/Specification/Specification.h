@@ -5,10 +5,11 @@
 #include<vector>
 #include<string>
 using namespace std;
+
 class Athlete
 {
 public:
-	Athlete(string name,int age,int Kilogram,string gender,string nation);
+	Athlete(string name, int age, int Kilogram, string gender, string nation);
 	~Athlete();
 	string _name;
 	int _age;
@@ -16,6 +17,7 @@ public:
 	string _gender;
 	string _nation;
 };
+
 //Athlete provide interface
 //specification interface
 class IAthleteProvide
@@ -31,6 +33,7 @@ class IAthleteExecute
 public:
 	virtual vector<Athlete* >searchAthletes(IAthleteProvide* IAthlete) = 0;
 };
+
 class AthleteExecute :public IAthleteExecute
 {
 public:
@@ -40,6 +43,7 @@ public:
 private:
 	vector<Athlete* >athletes;
 };
+
 class genderSearch :public IAthleteProvide
 {
 public:
@@ -49,6 +53,7 @@ public:
 private:
 	string _gender;
 };
+
 class KiloSearch :public IAthleteProvide
 {
 public:
@@ -58,6 +63,7 @@ public:
 private:
 	int _Kilogram;
 };
+
 class nationSearch :public IAthleteProvide
 {
 public:
@@ -67,6 +73,8 @@ public:
 private:
 	string _nation;
 };
-void testSpecification();
-#endif // !_SPECIFICATION_H_
+
+int testSpecification();
+
+#endif _SPECIFICATION_H_
 
