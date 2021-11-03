@@ -147,7 +147,7 @@ public:
 			printf("undo failed.\n");
 			return;
 		}
-		printf("undo -- ");
+		printf("The referee disallowed the last score!\n");
 		//当前命令
 		auto pCmd = mUndo.top();
 		//保存当前命令
@@ -166,7 +166,7 @@ public:
 		if (mRedo.empty())
 		{
 			//无法前进重做没有数据
-			printf("redo failed.\n");
+			printf("The referee allowed the last score to stand!\n");
 			return;
 		}
 		printf("redo -- ");
