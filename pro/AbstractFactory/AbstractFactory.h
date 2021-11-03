@@ -1,4 +1,4 @@
-#pragma once
+
 #include<vector>
 #include<algorithm>
 #include <iostream>
@@ -16,6 +16,7 @@ private:
     vector<string>sportsmanNation;
     //比赛状态变量，0表示未开始，1表示正在进行，2表示比赛暂停，3表示比赛结束
     int contestState;
+    Props prop;
 public:
     GameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
         contestName(cN), startTime(sT), contestSite(cS), sportsmanName(sName), sportsmanNation(sNation), contestState(cState) {}
@@ -44,10 +45,12 @@ public:
     //获取信息函数
     virtual const double getelapsedTime() { return 0; }
     virtual const double getdistance() { return 0; }
+    virtual const vector<bool> getsportsmanState() { vector<bool>null; return null; }
     virtual const vector<double> getdistanceTravelled() { vector<double>null; return null; }
     virtual const vector<double> getscore() { vector<double>null; return null; }
     //设置函数
     virtual void setelapsedTime(double para){}
+    virtual void setsportsmanState(vector<bool> para){}
     virtual void setdistanceTravelled(vector<double> para){}
     virtual void setscore(vector<double> para){}
 
@@ -83,10 +86,12 @@ public:
     //获取信息函数
     virtual const double getelapsedTime();
     virtual const double getdistance();
+    virtual const vector<bool> getsportsmanState();
     virtual const vector<double> getdistanceTravelled();
     virtual const vector<double> getscore();
     //设置函数
     virtual void setelapsedTime(double para);
+    virtual void setsportsmanState(vector<bool> para);
     virtual void setdistanceTravelled(vector<double> para);
     virtual void setscore(vector<double> para);
 
@@ -142,5 +147,19 @@ public:
     ~RunningFactory() {}
     virtual GameProduct* Produce(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) {
         return new RunningGameProduct(cN, sT, cS, sName, sNation, cState);
+    }
+};
+
+
+class Props
+{
+private:
+    string propsName;
+public:
+    ~Props() {}
+    Props(string name) : propsName(name){}
+
+    string getPropsName() {
+        return propsName;
     }
 };
