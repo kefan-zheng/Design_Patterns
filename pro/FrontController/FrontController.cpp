@@ -25,10 +25,6 @@ void Dispatcher::dispatch(string request)
 	{
 		testChainOfResponsibility();
 	}
-	else if (request == "command")
-	{
-		testCommand();
-	}
 	else if (request == "composite")
 	{
 		testComposite();
@@ -119,6 +115,24 @@ void Dispatcher::dispatch(string request)
 
 void FrontController::trackRequest(string request)
 {
+	if (request == "observer") {
+		request += " && singleton";
+	}
+	else if (request == "memento") {
+		request += " && singleton";
+	}
+	else if (request == "mediator") {
+		request += " && command";
+	}
+	else if (request == "decrator") {
+		request += " && abstracFactory";
+	}
+	else if (request == "facade") {
+		request += " && multition";
+	}
+	else if (request == "delegation") {
+		request += " && prototype";
+	}
 	cout << "design pattern request:" << request << endl;
 }
 
