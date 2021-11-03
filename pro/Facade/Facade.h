@@ -1,108 +1,70 @@
-#pragma once
 #ifndef _FACADE_H_
 #define _FACADE_H_
 #include <iostream>
 #include <vector>
+#include <time.h>
 using namespace std;
 
-//医院类
+//Hospital
 class Hospital
 {
 public:
     Hospital() {};
     ~Hospital() {};
-    void AccountingDetection()
-    {
-        cout << "样品正在进行核酸检测！" << endl;
-    };
+    void AccountingDetection();
 };
 
 struct HotelInfo {
     string hotelName;
     string location;
-    HotelInfo(string h, string l) :
-        hotelName(h), location(l) {}
+    HotelInfo(string h, string l);
 };
 
-//酒店类,采用了多例模式
+//Hotel, multion is adopted
 class Hotel
 {
 private:
-    const int hotelNum = 4;//4个可供选择的酒店
+    const int hotelNum = 4;//4 hotels to choose from
     static vector<HotelInfo*> hotelList;
     
 public:
     Hotel() {};
     ~Hotel() {};
-    void CheckIn()
-    {
-        if (hotelList.size() == 0) {
-            hotelList.push_back(new HotelInfo("Great Hotel", "Heping Street"));
-            hotelList.push_back(new HotelInfo("Yang Hotel", "Success Street"));
-            hotelList.push_back(new HotelInfo("Cao Hotel", "Great Street"));
-            hotelList.push_back(new HotelInfo("Zheng Hotel", "Sisyphus Street"));
-        }
-        srand((unsigned)time(NULL));
-        int randNum = rand() % 4;
-        HotelInfo* info = hotelList[randNum];
-        //HotelInfo* info = new HotelInfo("Great Hotel", "Heping Street");
-        cout << "Check in " << info->hotelName << "(location: " << info->location <<") successfully" << endl;
-    }
-    void Sampling()
-    {
-        cout << "已进行核酸采样，样品将送往医院检测。" << endl;
-    }
+    void CheckIn();
+    void Sampling();
 };
 
 
-//交通类
+//Transportation
 class Transportation
 {
 public:
-    Transportation();
-    ~Transportation();
-    void GetVehicle()
-    {
-        cout << "已安排专车为您出行服务。" << endl;
-    }
+    Transportation() {};
+    ~Transportation() {};
+    void GetVehicle();
 };
 
-//训练场馆类
+//Training
 class Training
 {
 public:
-    Training();
-    ~Training();
-    void TrainingLocation()
-    {
-        cout << "已安排专属的训练场所供特殊训练。" << endl;
-    }
+    Training() {};
+    ~Training() {};
+    void TrainingLocation();
 };
 
-//Facade类
+//Facade
 class Facade
 {
 public:
     Facade() {};
     ~Facade() {};
-    //核酸检测
-    void Detection()
-    {
-        _hotel->Sampling();
-        _hospital->AccountingDetection();
-    }
-    //预约训练
-    void AppointTraining()
-    {
-        _training->TrainingLocation();
-        _transportation->GetVehicle();
-    }
-    //办理入驻
-    void CheckIn()
-    {
-        _transportation->GetVehicle();
-        _hotel->CheckIn();
-    }
+    //nucleic acid test
+    void Detection();
+    //Appointment training
+    void AppointTraining();
+    //Handle settlement
+    void CheckIn();
 private:
     Hospital* _hospital;
     Hotel* _hotel;
@@ -110,7 +72,7 @@ private:
     Training* _training;
 };
 
-int testFacade();
 
+void testFacade();
 
 #endif
