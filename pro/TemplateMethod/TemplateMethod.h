@@ -1,4 +1,3 @@
-#pragma once
 #ifndef TEMPLATE_METHOD_TEMPLATEMETHOD_H
 #define TEMPLATE_METHOD_TEMPLATEMETHOD_H
 /*
@@ -29,15 +28,11 @@ public:
     void templateMethod()//Ä£°å·½·¨
     {
         // ...
-        holdGame1();
-        // ...
-        cout<<" and ";
-        holdGame2();
+        holdGame();
         // ...
     }
 
-    virtual void holdGame1() = 0;
-    virtual void holdGame2() = 0;
+    virtual void holdGame() = 0;
 
     void setName(std::string name)
     {
@@ -59,49 +54,36 @@ class SwimmingVenues : public Venues
 {
 public:
     ~SwimmingVenues() {}
-
     SwimmingVenues(std::string name)
     {
         this->setName(name);
     }
-
-    void holdGame1()
-    {
-        std::cout << "swimming" ;
-        // ...
-    }
-
-    void holdGame2()
-    {
-        std::cout << "diving";
-        // ...
-    }
+    void holdGame();
     // ...
 };
 class TrackFieldVenues : public Venues
 {
 public:
     ~TrackFieldVenues(){}
-
     TrackFieldVenues(std::string name)
     {
         this->setName(name);
     }
 
-    void holdGame1()
-    {
-        std::cout << "100m game";
-        // ...
-    }
+    void holdGame();
 
-    void holdGame2()
-    {
-        std::cout << "javelin" ;
-        // ...
-    }
     // ...
 };
+class Wudokan : public Venues
+{
+public:
+    ~Wudokan(){}
+    Wudokan(std::string name)
+    {
+        this->setName(name);
+    }
 
-int testTemplateMethod();
-
+    void holdGame();
+    // ...
+};
 #endif //TEMPLATE_METHOD_TEMPLATEMETHOD_H
