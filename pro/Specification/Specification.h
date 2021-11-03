@@ -5,6 +5,7 @@
 #include<vector>
 #include<string>
 using namespace std;
+
 class Athlete
 {
 public:
@@ -62,6 +63,7 @@ public:
 private:
 	int _Kilogram;
 };
+
 class nationSearch :public IAthleteProvide
 {
 public:
@@ -72,6 +74,7 @@ private:
 	string _nation;
 };
 
-void testSpecification();
-#endif // !_SPECIFICATION_H_
+int testSpecification();
+
+#endif _SPECIFICATION_H_
 

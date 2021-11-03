@@ -119,7 +119,7 @@ int testSpecification()
 	int size4 = Athlete4.size();
 	int size5 = Athlete5.size();
 	int i = 0;  //循环计数
-	cout << "Male weightlifters："<<endl;
+	cout << "男子举重运动员有："<<endl;
 	for (i = 0; i < size1; i++)
 	{
 		cout << "姓名：" << Athlete1.at(i)->_name << " 年龄：" << Athlete1.at(i)->_age << " 公斤级：" << Athlete1.at(i)->_Kilogram
@@ -131,19 +131,19 @@ int testSpecification()
 		cout << "姓名：" << Athlete2.at(i)->_name << " 年龄：" << Athlete2.at(i)->_age << " 公斤级：" << Athlete2.at(i)->_Kilogram
 			<< " 国籍：" << Athlete2.at(i)->_nation << endl;
 	}
-	cout << "73 kg weightlifter：" << endl;
+	cout << "73公斤级举重运动员有：" << endl;
 	for (i = 0; i < size3; i++)
 	{
 		cout << "姓名：" << Athlete3.at(i)->_name << " 年龄：" << Athlete3.at(i)->_age << " 性别：" << Athlete3.at(i)->_gender
 			<< " 国籍：" << Athlete3.at(i)->_nation << endl;
 	}
-	cout << "61 kg weightlifter：" << endl;
+	cout << "61公斤级举重运动员有：" << endl;
 	for (i = 0; i < size4; i++)
 	{
 		cout << "姓名：" << Athlete4.at(i)->_name << " 年龄：" << Athlete4.at(i)->_age << " 性别：" << Athlete4.at(i)->_gender
 			<< " 国籍：" << Athlete4.at(i)->_nation << endl;
 	}
-	cout << "Chinese weightlifter：" << endl;
+	cout << "中国举重运动员有：" << endl;
 	for (i = 0; i < size5; i++)
 	{
 		cout << "姓名：" << Athlete5.at(i)->_name << " 年龄：" << Athlete5.at(i)->_age << " 公斤级：" << Athlete5.at(i)->_Kilogram
