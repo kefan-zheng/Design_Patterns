@@ -48,7 +48,7 @@ const string designpatterns[30] = {
 "decorator",//(abstracFactory)跑步、乒乓
 "visitor",//足球
 "mediator",//(command)篮球
-"mvc","state"//铁人三项介绍与过程
+"mvc","state",//铁人三项介绍与过程
 "transferobject","interpreter",//羽毛球
 "specification",//举重
 
