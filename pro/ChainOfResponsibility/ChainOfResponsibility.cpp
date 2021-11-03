@@ -78,5 +78,5 @@ void testChainOfResponsibility()
     interimcommittee->HandleRequest(2);
     interimcommittee->HandleRequest(3);
     interimcommittee->HandleRequest(8);
-    system("pause");
+    //system("pause");
 }
