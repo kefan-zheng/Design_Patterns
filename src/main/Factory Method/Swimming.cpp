@@ -1,101 +1,87 @@
-#include <vector>
+#include "Swimming.h"
+using namespace std;
 
-/*
- * Factory Method
- */
-/*
- *200米自由泳（女子/男子）
- *200米个人混合泳（女子/男子）
- *4×100米男女混合泳接力
- */
-/*
-  * Product
-  * products implement the same interface so that the classes can refer
-  * to the interface not the concrete product
-  */
-class Swimming
+void Athlete::nextSec()
 {
-public:
-    virtual ~Swimming() {}
-    virtual const char *getName() = 0;
-};
-/*
- * Factory Method
- * provides an abstract interface, preparing for creating various kinds of products
- */
-class SwimmingFactory
+    if (distance < 200)
+    {
+        distance += 1 + rand() % 3;
+        ++time;
+    }
+    if (distance > 200)
+        distance = 200;
+}
+int Athlete::getDis() const
 {
-public:
-    virtual ~SwimmingFactory() {}
-    virtual Swimming *createSwimming() = 0;
-};
+    return distance;
+}
+std::string Athlete::getName() const
+{
+    return name;
+}
+bool Athlete::isFinal() const
+{
+    return distance == 200;
+}
+int Athlete::getTime() const
+{
+    return time;
+}
+void Swimming::addAth(Athlete ath)
+{
+    Athletes.push_back(ath);
+}
+void Swimming::run()
+{
+    vector<bool> finale(Athletes.size(), false);
+    cout << getName() << " begins!\n";
+    for (int i = 0; i != 4; ++i)
+    {
+        for (int j = 0; j != 30; ++j)
+        {
+            for (auto index = 0ull; index != Athletes.size(); ++index)
+            {
+                Athletes[index].nextSec();
+                if (!finale[index] && Athletes[index].isFinal())
+                {
+                    finale[index] = true;
+                    Res.push_back(Athletes[index]);
+                }
+            }
+        }
+        cout << 30 * (i + 1) << "s:\n";
+        for (const auto& ath : Athletes)
+        {
+            int dis = ath.getDis();
+            bool direction = (dis / 50) % 2; //false -> true<-
+            dis = direction ? (50 - dis % 50) : (dis % 50);
+            cout << left << setw(12) << ath.getName()
+                 << string(dis, '*') << (direction ? '<' : '>')
+                 << string(49 - dis, '*') << endl;
+        }
+    }
+    cout << getName() << " ends!\nResults:\n";
+    for (auto index = 0ull; index != Res.size(); ++index)
+    {
+        cout << left << setw(4) << index + 1 << setw(15) << Res[index].getName() << setw(3) << Res[index].getTime() << "s\n";
+    }
+    cout << endl;
+}
 
-/*
- * ConcreteProducts
- * define objects to be created by concrete factory
- */
-
-class ManFreestyle200 : public Swimming
+int main() //test
 {
-public:
-    ~ManFreestyle200() {}
-    const char *getName() { return "200m Man Freestyle"; }
-};
-class WomenFreestyle200 : public Swimming
-{
-public:
-    ~WomenFreestyle200() {}
-    const char *getName() { return "200m Women Freestyle"; }
-};
-class ManMedley200 : public Swimming
-{
-public:
-    ~ManMedley200() {}
-    const char *getName() { return "200m Man Medley"; }
-};
-class WomenMedley200 : public Swimming
-{
-public:
-    ~WomenMedley200() {}
-    const char *getName() { return "200m Women Medley"; }
-};
-class MNWMedleyDelay400 : public Swimming
-{
-public:
-    ~MNWMedleyDelay400() {}
-    const char *getName() { return "4*100m Man&Women Medley Delay"; }
-};
-/*
- * Concrete Factorys
- * each concrete factory creates one kind of products and client uses these factories
- */
-class ManFreestyle200Factory : public SwimmingFactory
-{
-public:
-    ~ManFreestyle200Factory() {}
-    Swimming *createSwimming() { return new ManFreestyle200(); }
-};
-class WomenFreestyle200Factory : public SwimmingFactory
-{
-public:
-    ~WomenFreestyle200Factory() {}
-    Swimming *createSwimming() { return new WomenFreestyle200(); }
-};
-class ManMedley200Factory : public SwimmingFactory
-{
-public:
-    ~ManMedley200Factory() {}
-    Swimming *createSwimming() { return new ManMedley200(); }
-};
-class WomenMedley200Factory : public SwimmingFactory
-{
-public:
-    ~WomenMedley200Factory() {}
-    Swimming *createSwimming() { return new WomenMedley200(); }
-};
-class MNWMedleyDelay400Factory : public SwimmingFactory
-{
-public:
-    ~MNWMedleyDelay400Factory() {}
-    Swimming *createSwimming() { return new MNWMedleyDelay400(); }
-};
+    srand(time(nullptr));
+    ManFreestyle200Factory m;
+    WomenFreestyle200Factory w;
+    Swimming* s1 = m.createSwimming();
+    Swimming* s2 = w.createSwimming();
+    s1->addAth(string("NingZetao"));
+    s1->addAth(string("LiGuangyuan"));
+    s1->addAth(string("XuJiayu"));
+    s2->addAth(string("YeShiwen"));
+    s2->addAth(string("FuYuanhui"));
+    s2->addAth(string("ZhangYufei"));
+    s1->run();
+    s2->run();
+    return 0;
+}
