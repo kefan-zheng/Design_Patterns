@@ -87,3 +87,4 @@ public:
     // ...
 };
 #endif //TEMPLATE_METHOD_TEMPLATEMETHOD_H
+int testTemplateMethod();

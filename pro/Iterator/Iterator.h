@@ -157,9 +157,5 @@ private:
     unsigned int index;
     // ...
 };
-Iterator* ConcreteAggregate::createIterator()
-{
-    return new ConcreteIterator(this);
-}
 #endif //ITERATOR_ITERATOR_H
-
+int testIterator();

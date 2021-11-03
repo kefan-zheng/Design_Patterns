@@ -8,14 +8,19 @@
  *
  */
 //奥运会开幕式场景
-#include "iostream"
-#include "ITerator.h"
+#include <iostream>
+#include "Iterator.h"
+#include <windows.h>
+Iterator* ConcreteAggregate::createIterator()
+{
+    return new ConcreteIterator(this);
+}
 void delayTime()
 {
     for(int i=0;i<5;i++)
     {
         cout<<".";
-        _sleep(500);
+        //Sleep(500);//暂时注释掉，最后记得加回来
     }
     cout<<std::endl;
 }

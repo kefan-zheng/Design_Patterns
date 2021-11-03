@@ -1,6 +1,7 @@
 #include "iostream"
 #include "TemplateMethod.h"
-#include "FlyWeight/Flyweight.cpp"
+#include "../Flyweight/Flyweight.h"
+#include <windows.h>
 class SwimmingFactory:public FlyweightFactory
 {
 public:
@@ -96,7 +97,7 @@ void delay_time()
     for(int i=0;i<5;i++)
     {
         std::cout<<'.';
-        _sleep(200);
+        //Sleep(200);//暂时注释掉，最后记得加回来
     }
     std::cout<<std::endl;
 }
