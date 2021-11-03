@@ -1,5 +1,6 @@
-#ifndef _CHAINOFRESPONSIBILITY_H_
-#define _CHAINOFRESPONSIBILITY_H_
+#pragma once
+#ifndef _CHAIN_OF_RESPONSIBILITY_H_
+#define _CHAIN_OF_RESPONSIBILITY_H_
 
 
 #include <iostream>
@@ -8,37 +9,64 @@ using namespace std;
 class Handler
 {
 public:
-    Handler();
-    virtual ~Handler();
-    void SetNextHandler(Handler* next);
-    virtual void HandleRequest(int level);
+    Handler(){NextHandler = NULL;}
+    virtual ~Handler(){}
+
+    void SetNextHandler(Handler *next){NextHandler = next;}
+
+    virtual void HandleRequest(int level){};
 protected:
-    Handler* NextHandler;
+    Handler *NextHandler;
 };
 
 class InterimCommittee:public Handler
 {
 public:
-    InterimCommittee();
-    ~InterimCommittee() override;
-    void HandleRequest(int level);
+    virtual void HandleRequest(int level)
+    {
+        if(level <= 1)
+        {
+            cout<<""<<endl;
+        }
+        else
+        {
+            NextHandler->HandleRequest(level);
+        }
+    }
 };
 
 class ExecutiveCommittee:public Handler
 {
 public:
-    ExecutiveCommittee();
-    ~ExecutiveCommittee() override;
-    void HandleRequest(int level);
+    virtual void HandleRequest(int level)
+    {
+        if(level <= 2)
+        {
+            cout<<"2"<<endl;
+        }
+        else
+        {
+            NextHandler->HandleRequest(level);
+        }
+    }
 };
 
 class PlenarySession:public Handler
 {
 public:
-    PlenarySession();
-    ~PlenarySession() override;
-    void HandleRequest(int level);
+    virtual void HandleRequest(int level)
+    {
+        if(level <= 3)
+        {
+            cout<<"3"<<endl;
+        }
+        else
+        {
+            cerr<<"4"<<endl;
+        }
+    }
 };
 
-void testChainOfResponsibility();
+int testChainOfResponsibility();
+
 #endif

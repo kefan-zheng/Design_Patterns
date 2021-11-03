@@ -16,26 +16,28 @@ class ConcreteAggregate;
 class Delegation
 {
 private:
+    string name;//代表团名称
     string nation;//所属国家地区
     int playerNum;//运动员人数
-    int order;//enter order
+    int sportsNum;//参加的项目个数
 public:
     Delegation()
     {
         this->playerNum=0;
-        this->order=0;
+        this->sportsNum=0;
     }
-    void setValue(string nation,int num1,int num2)
+    void setValue(string name,string nation,int num1,int num2)
     {
+        this->name = name;
         this->nation = nation;
         this->playerNum = num1;
-        this->order = num2;
+        this->sportsNum = num2;
     }
     void declare()
     {
-        cout<<"Walking head-on is the "<<this->nation<<" team."<<std::endl;
-        cout<<this->nation<<" sent "<<this->playerNum<<"players. They enters in the order of "
-            <<this->order<<"."<<std::endl;
+        cout<<"迎面走来的是来自"<<this->nation<<"的"<<this->name<<""<<std::endl;
+        cout<<this->name<<"共派出了"<<this->playerNum<<"位运动员参加本届奥运会，他们将在"<<this->sportsNum
+            <<"个项目中争夺奖牌"<<std::endl;
     }
 };
 /*
@@ -65,38 +67,36 @@ public:
     ConcreteAggregate(unsigned int size)
     {
         list = new Delegation[size];
+        this->initDelegations();
         count = size;
-        exist=0;
     }
     ~ConcreteAggregate()
     {
         delete[] list;
     }
+
     Iterator* createIterator();
-    unsigned int getSize() const
+
+    unsigned int size() const
     {
         return count;
     }
+
     void at(unsigned int index)
     {
         list[index].declare();
     }
-    void addDelegation(string nation,int num1,int num2)
+    void initDelegations()
     {
-        if(exist==count)
-        {
-            cout<<"Capacity is full"<<std::endl;
-            return;
-        }
-        this->list[exist].setValue(nation,num1,num2);
-        exist++;
+        this->list[0].setValue("中国代表队","中国",230,40);
+        this->list[1].setValue("中国香港代表队","中国",20,7);
+        this->list[2].setValue("俄罗斯奥委会代表队","俄罗斯",170,30);
     }
     // ...
 
 private:
     Delegation* list;
-    unsigned int count;//capacity
-    int exist;//number of teams that already exist
+    unsigned int count;
     // ...
 };
 
@@ -134,6 +134,7 @@ public:
     {
         index = 0;
     }
+
     void next()
     {
         index++;
@@ -141,7 +142,7 @@ public:
 
     bool isDone() const
     {
-        return (index >= list->getSize());
+        return (index >= list->size());
     }
     void currentItem()
     {

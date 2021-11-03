@@ -8,38 +8,33 @@
  *
  */
 //奥运会开幕式场景
-#include <iostream>
+#include "iostream"
 #include "Iterator.h"
-#include <windows.h>
-Iterator* ConcreteAggregate::createIterator()
-{
-    return new ConcreteIterator(this);
-}
+#include<Windows.h>
+
 void delayTime()
 {
     for(int i=0;i<5;i++)
     {
         cout<<".";
-        //Sleep(500);//暂时注释掉，最后记得加回来
+        Sleep(500);
     }
     cout<<std::endl;
 }
+
+Iterator* ConcreteAggregate::createIterator()
+{
+    return new ConcreteIterator(this);
+}
+
 int testIterator()
 {
-    int size=6;
+    int size=3;
+
     ConcreteAggregate list = ConcreteAggregate(size);//元素容器
 
-    list.addDelegation("Italy",372,19);
-    list.addDelegation("Great Britain",376,28);
-    list.addDelegation("Australia",478,37);
-    list.addDelegation("China",406,110);
-    list.addDelegation("Germany",425,115);
-    list.addDelegation("United States",613,204);
-    list.addDelegation("France",398,205);
-    list.addDelegation("Japan",552,206);
-
     Iterator* it = list.createIterator();//为元素容器创建迭代器
-    cout<<"Opening ceremony begins!"<<std::endl;
+    cout<<"开幕式开始"<<std::endl;
     delayTime();
     for (; !it->isDone(); it->next())//遍历容器
     {
@@ -47,5 +42,6 @@ int testIterator()
         delayTime();
     }
     delete it;
+    cout << std::endl;
     return 0;
 }

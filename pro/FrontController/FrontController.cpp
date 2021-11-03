@@ -5,7 +5,11 @@ using namespace std;
 
 void Dispatcher::dispatch(string request)
 {
-	if(request == "adapter")
+	if (request == "abstractfactory")
+	{
+		testAbstractFactory();
+	}
+	else if(request == "adapter")
 	{
 		testAdaptor();
 	}
@@ -20,6 +24,10 @@ void Dispatcher::dispatch(string request)
 	else if (request == "chainofresponsibility")
 	{
 		testChainOfResponsibility();
+	}
+	else if (request == "command")
+	{
+		testCommand();
 	}
 	else if (request == "composite")
 	{
@@ -111,30 +119,6 @@ void Dispatcher::dispatch(string request)
 
 void FrontController::trackRequest(string request)
 {
-	if (request == "observer") {
-		request += " && singleton";
-	}
-	else if (request == "memento") {
-		request += " && singleton";
-	}
-	else if (request == "mediator") {
-		request += " && command";
-	}
-	else if (request == "decrator") {
-		request += " && abstracFactory";
-	}
-	else if (request == "facade") {
-		request += " && multition";
-	}
-	else if (request == "delegation") {
-		request += " && prototype";
-	}
-	else if (request == "templateMethod") {
-		request += " && flyweight";
-	}
-	else if (request == "composite") {
-		request += " && stategy";
-	}
 	cout << "design pattern request:" << request << endl;
 }
 

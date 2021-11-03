@@ -39,6 +39,7 @@
     <ClCompile Include="Memento\Memento.cpp" />
     <ClCompile Include="Mvc\Mvc.cpp" />
     <ClCompile Include="Observer\Observer.cpp" />
+    <ClCompile Include="Prototype\Prototype.cpp" />
     <ClCompile Include="Proxy\Proxy.cpp" />
     <ClCompile Include="Specification\Specification.cpp" />
     <ClCompile Include="State\State.cpp" />
@@ -80,9 +81,6 @@
     <ClInclude Include="utils\MedalRanking.h" />
     <ClInclude Include="utils\SingletonMedalRanking.h" />
     <ClInclude Include="Visitor\Visitor.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Immutable\input.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
