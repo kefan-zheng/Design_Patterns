@@ -39,7 +39,6 @@
     <ClCompile Include="Memento\Memento.cpp" />
     <ClCompile Include="Mvc\Mvc.cpp" />
     <ClCompile Include="Observer\Observer.cpp" />
-    <ClCompile Include="Prototype\Prototype.cpp" />
     <ClCompile Include="Proxy\Proxy.cpp" />
     <ClCompile Include="Specification\Specification.cpp" />
     <ClCompile Include="State\State.cpp" />

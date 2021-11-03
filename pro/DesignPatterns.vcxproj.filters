@@ -99,9 +99,6 @@
     <ClCompile Include="TransferObject\TransferObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Prototype\Prototype.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrontController\FrontController.h">
