@@ -67,5 +67,7 @@ public:
 private:
 	string _nation;
 };
+
+void testSpecification();
 #endif // !_SPECIFICATION_H_
 

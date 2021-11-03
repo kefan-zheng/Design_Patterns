@@ -77,7 +77,7 @@ vector<Athlete*>AthleteExecute::searchAthletes(IAthleteProvide* IAthlete)
 	}
 	return Athletes;
 }
-int testSpecification()
+void testSpecification()
 {
 	//ÄÚ´æÊý¾Ý
 	vector<Athlete* >Athletes;
@@ -151,5 +151,4 @@ int testSpecification()
 		cout << "name£º" << Athlete5.at(i)->_name << " age£º" << Athlete5.at(i)->_age << " kilogram£º" << Athlete5.at(i)->_Kilogram
 			<< " gender£º" << Athlete5.at(i)->_gender<< endl;
 	}
-	return 0;
 }
