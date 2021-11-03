@@ -26,9 +26,6 @@ int main()
 		}
 
 		frontcontroller.dispatchRequest(designpatterns[i]);
-		if (designpatterns[i] == "immutable") {
-			system("pause");
-		}
 		//system("pause");
 		cout << endl;
 	}
