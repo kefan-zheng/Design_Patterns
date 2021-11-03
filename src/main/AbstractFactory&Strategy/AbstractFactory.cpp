@@ -13,10 +13,7 @@ const double RunningGameProduct::getdistance()
     return this->distance;
 }
 
-const vector<bool> RunningGameProduct::getsportsmanState()
-{
-    return this->sportsmanState;
-}
+
 
 const vector<double> RunningGameProduct::getdistanceTravelled()
 {
@@ -33,11 +30,7 @@ void RunningGameProduct::setelapsedTime(double para)
     this->elapsedTime = para;
 }
 
-void RunningGameProduct::setsportsmanState(vector<bool> para)
-{
-    sportsmanState.clear();
-    this->sportsmanState = para;
-}
+
 
 void RunningGameProduct::setdistanceTravelled(vector<double> para)
 {

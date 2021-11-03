@@ -44,12 +44,10 @@ public:
     //获取信息函数
     virtual const double getelapsedTime() { return 0; }
     virtual const double getdistance() { return 0; }
-    virtual const vector<bool> getsportsmanState() { vector<bool>null; return null; }
     virtual const vector<double> getdistanceTravelled() { vector<double>null; return null; }
     virtual const vector<double> getscore() { vector<double>null; return null; }
     //设置函数
     virtual void setelapsedTime(double para){}
-    virtual void setsportsmanState(vector<bool> para){}
     virtual void setdistanceTravelled(vector<double> para){}
     virtual void setscore(vector<double> para){}
 
@@ -85,12 +83,10 @@ public:
     //获取信息函数
     virtual const double getelapsedTime();
     virtual const double getdistance();
-    virtual const vector<bool> getsportsmanState();
     virtual const vector<double> getdistanceTravelled();
     virtual const vector<double> getscore();
     //设置函数
     virtual void setelapsedTime(double para);
-    virtual void setsportsmanState(vector<bool> para);
     virtual void setdistanceTravelled(vector<double> para);
     virtual void setscore(vector<double> para);
 
