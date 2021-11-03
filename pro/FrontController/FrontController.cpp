@@ -99,7 +99,7 @@ void Dispatcher::dispatch(string request)
 	}
 	else if (request == "transferobject")
 	{
-	testTransferObject();
+		testTransferObject();
 	}
 	else if (request == "visitor")
 	{

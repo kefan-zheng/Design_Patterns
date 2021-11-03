@@ -25,64 +25,18 @@ private:
 	int fail;
 	double winRate;//胜率
 public:
-	AthleteVO(string name, int serialNo, int win, int fail)
-	{
-		this->name = name;
-		this->serialNo = serialNo;
-		this->win = win;
-		this->fail = fail;
-		this->winRate = (double)win / (win + fail);
-	}
-	string getName()
-	{
-		return this->name;
-	}
-	void setName(string name)
-	{
-		this->name = name;
-	}
-	int getSerialNo()
-	{
-		return this->serialNo;
-	}
-	void setSerialNo(int serialNo)
-	{
-		this->serialNo = serialNo;
-	}
-	int getWin()
-	{
-		return this->win;
-	}
-	void setWin(int win)
-	{
-		this->win = win;
-	}
-	int getFail()
-	{
-		return this->fail;
-	}
-	void setFail (int fail)
-	{
-		this->fail = fail;
-	}
-	int getWinRate()
-	{
-		return this->winRate;
-	}
-	void setWinRate(double winRate)
-	{
-		this->winRate = winRate;
-	}
-	void updateWinRate(string result)
-	{
-		if (result == "win") {
-			this->win++;
-		}
-		else if (result == "fail") {
-			this->fail++;
-		}
-		this->winRate = (double)this->win / (this->win + this->fail);
-	}
+	AthleteVO(string name, int serialNo, int win, int fail);
+	string getName();
+	void setName(string name);
+	int getSerialNo();
+	void setSerialNo(int serialNo);
+	int getWin();
+	void setWin(int win);
+	int getFail();
+	void setFail(int fail);
+	int getWinRate();
+	void setWinRate(double winRate);
+	void updateWinRate(string result);
 };
 
 // 业务对象
@@ -93,65 +47,20 @@ private:
 	vector<AthleteVO> athletes;
 
 public:
-	SerialNoBO()
-	{
-		;
-	}
-
 	// 从数据库中增加一个运动员
-	void addAthlete(AthleteVO athlete)
-	{
-		athletes.push_back(athlete);
-	}
+	void addAthlete(AthleteVO athlete);
 	// 从数据库中增加一堆运动员
-	void addAthletes(vector<AthleteVO> athletes)
-	{
-		for (vector<AthleteVO>::iterator iter = athletes.begin(); iter != athletes.end(); iter++) {
-			athletes.push_back(*iter);
-		}
-	}
+	void addAthletes(vector<AthleteVO> athletes);
 
 	// 从数据库中删除一个运动员
-	void deleteAthlete(AthleteVO athlete)
-	{
-		for (vector<AthleteVO>::iterator iter = athletes.begin(); iter != athletes.end(); iter++) {
-			if (iter->getSerialNo() == athlete.getSerialNo() && iter->getName() == athlete.getName()) {
-				athletes.erase(iter);
-				break;
-			}
-		}
-	}
+	void deleteAthlete(AthleteVO athlete);
 
 	// 从数据库中更新一个运动员的信息(胜率)（一场比赛后调用）
-	void updateAthlete(AthleteVO athlete)
-	{
-		for (vector<AthleteVO>::iterator iter = athletes.begin(); iter != athletes.end(); iter++) {
-			if (iter->getSerialNo() == athlete.getSerialNo()) {
-				iter->setName(athlete.getName());
-				iter->setSerialNo(athlete.getSerialNo());
-				iter->setWin(athlete.getWin());
-				iter->setFail(athlete.getFail());
-				iter->setWinRate(athlete.getWinRate());
-				cout << "Serial No " << athlete.getSerialNo() << ", updated in the database." << endl;
-				break;
-			}
-		}
-	}
+	void updateAthlete(AthleteVO athlete);
 
 	// 从数据库中检索运动员名单
-	vector<AthleteVO> getAllAthletes()
-	{
-		return athletes;
-	}
-	AthleteVO getAthlete(int serialNo)
-	{
-		for (vector<AthleteVO>::iterator iter = athletes.begin(); iter != athletes.end(); iter++) {
-			if (iter->getSerialNo() == serialNo) {
-				return *iter;
-			}
-		}
-		return AthleteVO(NULL, -1, -1, -1);
-	}
+	vector<AthleteVO> getAllAthletes();
+	AthleteVO getAthlete(int serialNo);
 };
 
 int testTransferObject();
