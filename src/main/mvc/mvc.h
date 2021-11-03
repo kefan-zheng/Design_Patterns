@@ -13,27 +13,22 @@ public:
     Player() {};
     ~Player() {};
 
-    string getNation();
-    void setNation(string nation);
     string getName();
     void setName(string name);
-
+    void setScore(int i,int score)
+    {
+        Score[i-1]=score;
+    }
+    int getScore(int i)
+    {
+        return Score[i-1];
+    }
 private:
-    string nation;
     string name;
+    int Score[3];
 };
 
-string Player ::getNation()
-{
-    return nation;
-}
-
-void Player::setNation(string nation)
-{
-    this->nation = nation;
-}
-
-string Player::getName()
+string Player ::getName()
 {
     return name;
 }
@@ -43,6 +38,7 @@ void Player::setName(string name)
     this->name = name;
 }
 
+
 //视图View类StudentView
 class PlayerView
 {
@@ -50,27 +46,34 @@ public:
     PlayerView() {};
     ~PlayerView() {};
 
-    void playerDetails(string name, string nation);
+    void playerDetails(Player player);
 };
 
-void PlayerView::playerDetails(string name, string nation)
+void PlayerView::playerDetails(Player player)
 {
     cout << "Player: " << endl
-         << "Name: " << name << endl
-         << "Nation: " << nation<< endl;
+         << "Nation: " << player.getName()<< endl;
 }
 
 //controller控制器类StudentController
 class PlayerController
 {
 public:
+    PlayerController(){};
     PlayerController(Player model, PlayerView view);
     ~PlayerController() {};
 
     void setPlayerName(string name);
     string getPlayerName();
-    void setPlayerNation(string nation);
-    string getPlayerNation();
+
+    void setPlayerScore(int i,int score)
+    {
+        this->model.setScore(i,score);
+    };
+    int getPlayerScore(int i)
+    {
+        return this->model.getScore(i);
+    };
     void updateView();
 private:
     Player model;
@@ -93,18 +96,8 @@ string PlayerController::getPlayerName()
     return this->model.getName();
 }
 
-void PlayerController::setPlayerNation(string nation)
-{
-    this->model.setNation(nation);
-}
-
-string PlayerController::getPlayerNation()
-{
-    return this->model.getNation();
-}
-
 void PlayerController::updateView()
 {
-    this->view.playerDetails(this->model.getName(), this->model.getNation());
+    this->view.playerDetails(model);
 }
 #endif //MVC_MVC_H
