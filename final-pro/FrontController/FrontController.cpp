@@ -128,9 +128,6 @@ void FrontController::trackRequest(string request)
 	else if (request == "templateMethod") {
 		request += " && flyweight";
 	}
-	else if (request == "composite") {
-		request += " && stategy";
-	}
 	cout << "design pattern request:" << request << endl;
 }
 

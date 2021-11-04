@@ -9,7 +9,7 @@ int main()
 	Dispatcher dispatcher;
 	FrontController frontcontroller;
 	frontcontroller.set(&dispatcher);
-	const string noTestPattern[] = {"flyweight", "strategy", "command", "frontController", "abstractfactory", "multition", "singleton", "prototype"}; //这些设计模式被合并到了其他设计模式中
+	const string noTestPattern[] = {"flyweight", "command", "frontController", "abstractfactory", "multition", "singleton", "prototype"}; //这些设计模式被合并到了其他设计模式中
 	for (int i = 0; i < 30; i++)
 	{
 		bool continueFlag = false;

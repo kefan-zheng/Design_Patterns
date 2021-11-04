@@ -38,7 +38,7 @@ const string designpatterns[30] = {
 "facade",//(mutition)入住奥运村
 "templatemethod",//(flyweight)场外管理
 "immutable",//打印比赛项目
-"composite",//(stategy)打印比赛详情
+"composite","strategy",//(stategy)打印比赛详情
 "bridge",//运动员、教练、志愿者自我介绍
 
 //比赛项目
@@ -59,7 +59,7 @@ const string designpatterns[30] = {
 "proxy",//药检查询
 
 //下面所有设计模式被合并到其他设计模式测试函数中
-"flyweight","strategy","command","frontController","abstractfactory","multition", "singleton" ,"prototype" 
+"flyweight","command","frontController","abstractfactory","multition", "singleton" ,"prototype" 
 };
 //, "privateClassData";考虑删除的多余设计模式
 
