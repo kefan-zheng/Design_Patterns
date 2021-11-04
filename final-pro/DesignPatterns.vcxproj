@@ -29,6 +29,7 @@
     <ClCompile Include="Decorator\Decorator.cpp" />
     <ClCompile Include="Delegation\Delegation.cpp" />
     <ClCompile Include="Facade\Facade.cpp" />
+    <ClCompile Include="FactoryMethod\Swimming.cpp" />
     <ClCompile Include="Flyweight\Flyweight.cpp" />
     <ClCompile Include="FrontController\FrontController.cpp" />
     <ClCompile Include="Immutable\Immutable.cpp" />

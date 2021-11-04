@@ -99,6 +99,9 @@
     <ClCompile Include="TransferObject\TransferObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="FactoryMethod\Swimming.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FrontController\FrontController.h">
@@ -167,9 +170,6 @@
     <ClInclude Include="Iterator\Iterator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="FactoryMethod\Swimming.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Delegation\Delegation.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -192,6 +192,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="TransferObject\TransferObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryMethod\Swimming.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

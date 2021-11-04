@@ -1,23 +1,48 @@
+#include <iostream>
 #include <vector>
-
+#include <string>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
 /*
  * Factory Method
  */
+class fAthlete
+{
+public:
+    fAthlete() {}
+    fAthlete(std::string n) : name(n), distance(0), time(0) {}
+    void nextSec();
+    int getDis() const;
+    std::string getName() const;
+    bool isFinal() const;
+    int getTime() const;
+
+private:
+    std::string name;
+    int distance;
+    int time;
+};
 /*
  *200米自由泳（女子/男子）
  *200米个人混合泳（女子/男子）
- *4×100米男女混合泳接力
  */
 /*
-  * Product
-  * products implement the same interface so that the classes can refer
-  * to the interface not the concrete product
-  */
+ * Product
+ * products implement the same interface so that the classes can refer
+ * to the interface not the concrete product
+ */
 class Swimming
 {
 public:
     virtual ~Swimming() {}
-    virtual const char *getName() = 0;
+    virtual const char* getName() = 0;
+    virtual void addAth(fAthlete ath);
+    virtual void run();
+
+private:
+    std::vector<fAthlete> Athletes;
+    std::vector<fAthlete> Res;
 };
 /*
  * Factory Method
@@ -27,7 +52,7 @@ class SwimmingFactory
 {
 public:
     virtual ~SwimmingFactory() {}
-    virtual Swimming *createSwimming() = 0;
+    virtual Swimming* createSwimming() = 0;
 };
 
 /*
@@ -39,31 +64,13 @@ class ManFreestyle200 : public Swimming
 {
 public:
     ~ManFreestyle200() {}
-    const char *getName() { return "200m Man Freestyle"; }
+    const char* getName() { return "200m Man Freestyle"; }
 };
 class WomenFreestyle200 : public Swimming
 {
 public:
     ~WomenFreestyle200() {}
-    const char *getName() { return "200m Women Freestyle"; }
-};
-class ManMedley200 : public Swimming
-{
-public:
-    ~ManMedley200() {}
-    const char *getName() { return "200m Man Medley"; }
-};
-class WomenMedley200 : public Swimming
-{
-public:
-    ~WomenMedley200() {}
-    const char *getName() { return "200m Women Medley"; }
-};
-class MNWMedleyDelay400 : public Swimming
-{
-public:
-    ~MNWMedleyDelay400() {}
-    const char *getName() { return "4*100m Man&Women Medley Delay"; }
+    const char* getName() { return "200m Women Freestyle"; }
 };
 /*
  * Concrete Factorys
@@ -73,29 +80,13 @@ class ManFreestyle200Factory : public SwimmingFactory
 {
 public:
     ~ManFreestyle200Factory() {}
-    Swimming *createSwimming() { return new ManFreestyle200(); }
+    Swimming* createSwimming() { return new ManFreestyle200(); }
 };
 class WomenFreestyle200Factory : public SwimmingFactory
 {
 public:
     ~WomenFreestyle200Factory() {}
-    Swimming *createSwimming() { return new WomenFreestyle200(); }
+    Swimming* createSwimming() { return new WomenFreestyle200(); }
 };
-class ManMedley200Factory : public SwimmingFactory
-{
-public:
-    ~ManMedley200Factory() {}
-    Swimming *createSwimming() { return new ManMedley200(); }
-};
-class WomenMedley200Factory : public SwimmingFactory
-{
-public:
-    ~WomenMedley200Factory() {}
-    Swimming *createSwimming() { return new WomenMedley200(); }
-};
-class MNWMedleyDelay400Factory : public SwimmingFactory
-{
-public:
-    ~MNWMedleyDelay400Factory() {}
-    Swimming *createSwimming() { return new MNWMedleyDelay400(); }
-};
+
+int testFactoryMethod();
