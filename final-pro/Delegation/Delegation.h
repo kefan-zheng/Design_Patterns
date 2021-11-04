@@ -44,4 +44,4 @@ private:
 };
 
 
-void testPrototype(); //test
+void testDelegation(); //test

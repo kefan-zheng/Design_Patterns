@@ -31,7 +31,7 @@ void Dispatcher::dispatch(string request)
 	}
 	else if (request == "delegation")
 	{
-		cout << "wait function" << endl;
+		//testDelegation();
 	}
 	else if (request == "facade")
 	{
@@ -39,7 +39,7 @@ void Dispatcher::dispatch(string request)
 	}
 	else if (request == "factorymethod")
 	{
-		cout << "wait function" << endl;
+		testFactoryMethod();
 	}
 	else if (request == "flyweight")
 	{
@@ -72,10 +72,6 @@ void Dispatcher::dispatch(string request)
 	else if (request == "observer")
 	{
 		testObserver();
-	}
-	else if (request == "prototype")
-	{
-		testPrototype();
 	}
 	else if (request == "proxy")
 	{

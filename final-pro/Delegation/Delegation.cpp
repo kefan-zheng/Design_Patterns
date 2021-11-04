@@ -26,7 +26,7 @@ double Diver::score() //difficulty all set 2.0
     return total;
 }
 
-void testPrototype() //test
+void testDelegation() //test
 {
     vector<Diver> divers;
     divers.push_back(string("QuanHongchan"));
