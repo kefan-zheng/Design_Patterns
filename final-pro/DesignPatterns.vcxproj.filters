@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FrontController\FrontController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="AbstractFactory\AbstractFactory.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\Adaptor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Bridge\Bridge.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Builder\Builder.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ChainOfResponsibility\ChainOfResponsibility.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Composite\Composite.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Decorator\Decorator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Facade\Facade.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Flyweight\Flyweight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Immutable\Immutable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Iterator\Iterator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mediator\Mediator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Memento\Memento.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Mvc\Mvc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer\Observer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Proxy\Proxy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Specification\Specification.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="State\State.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Strategy\Strategy.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TemplateMethod\TemplateMethod.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Visitor\Visitor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Delegation\Delegation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="utils\AbstractMedalRanking.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Command\Command.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Interpreter\Interpreter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferObject\TransferObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FrontController\FrontController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory\AbstractFactory.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge\Bridge.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Builder\Builder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ChainOfResponsibility\ChainOfResponsibility.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Composite\Composite.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Decorator\Decorator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Facade\Facade.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Flyweight\Flyweight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Immutable\Immutable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mediator\Mediator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Memento\Memento.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Mvc\Mvc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer\Observer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Proxy\Proxy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Specification\Specification.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="State\State.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Strategy\Strategy.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TemplateMethod\TemplateMethod.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Visitor\Visitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\Adaptor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Iterator\Iterator.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryMethod\Swimming.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Delegation\Delegation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype\Prototype.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\AbstractMedalRanking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\MedalRanking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\SingletonMedalRanking.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Command\Command.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpreter\Interpreter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferObject\TransferObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Immutable\input.txt" />
+  </ItemGroup>
+</Project>
