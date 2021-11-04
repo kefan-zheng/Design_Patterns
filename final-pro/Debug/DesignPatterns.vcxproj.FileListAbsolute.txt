@@ -1,2 +1,0 @@
-C:\Users\22109\Desktop\设计模式\项目\github-project\Design_Patterns\pro\Debug\DesignPatterns.exe
-C:\Users\22109\Desktop\designPattern-ver1.0\DesignPattern-ver1.0\pro\Debug\DesignPatterns.exe
