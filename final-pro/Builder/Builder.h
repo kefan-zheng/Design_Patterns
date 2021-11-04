@@ -39,7 +39,7 @@ public:
 };
 
 //游泳比赛创建者，继承自抽象比赛建造者
-class SwimmingGameBuilder : public GameBuilder
+class FencingGameBuilder : public GameBuilder
 {
 public:
     void buildTime();
@@ -49,7 +49,7 @@ public:
 
 
 //跑步比赛创建者，继承自抽象比赛建造者
-class RunningGameBuilder : public GameBuilder
+class TaekwondoGameBuilder : public GameBuilder
 {
 public:
     void buildTime();

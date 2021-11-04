@@ -13,6 +13,17 @@ void GermanyNationality::setattribute()
     nationality = "Germany";
 }
 
+//参加记录的具体实现类
+void NeverParticipate::setattribute()
+{
+    participateNumBefore = 0;
+}
+
+void ParticipateOnce::setattribute()
+{
+    participateNumBefore = 1;
+}
+
 //性别的具体实现类
 void Male::setattribute()
 {
@@ -29,51 +40,100 @@ void CoachRole::setattribute()
 {
     implementor1->setattribute();
     implementor2->setattribute();
+    implementor3->setattribute();
 }
 
 void CoachRole::print()
 {
-    std::cout << "I am a Coach." << std::endl;
-    std::cout << "I am from " << implementor1->nationality << "." << std::endl;
-    std::cout << "My gender is " << implementor2->gender << "." << std::endl;
+    cout << "I am a Coach." << endl;
+    cout << "I am from " << implementor1->nationality << "." << endl;
+    cout << "My gender is " << implementor2->gender << "." << endl;
+    if (implementor3->participateNumBefore == 0)
+    {
+        cout << "I've never been to the Olympics before. This is my first time." << endl;
+    }
+    else if (implementor3->participateNumBefore == 1)
+    {
+        cout << "I've already been to the Olympics once" << endl;
+    }
 }
 
 void AthleteRole::setattribute()
 {
     implementor1->setattribute();
     implementor2->setattribute();
+    implementor3->setattribute();
 }
 
 void AthleteRole::print()
 {
-    std::cout << "I am an Athlete." << std::endl;
-    std::cout << "I am from " << implementor1->nationality << "." << std::endl;
-    std::cout << "My gender is " << implementor2->gender << "." << std::endl;
+    cout << "I am an Athlete." << endl;
+    cout << "I am from " << implementor1->nationality << "." << endl;
+    cout << "My gender is " << implementor2->gender << "." << endl;
+    if (implementor3->participateNumBefore == 0)
+    {
+        cout << "I've never been to the Olympics before. This is my first time." << endl;
+    }
+    else if (implementor3->participateNumBefore == 1)
+    {
+        cout << "I've already been to the Olympics once" << endl;
+    }
+}
+
+void Volunteer::setattribute()
+{
+    implementor1->setattribute();
+    implementor2->setattribute();
+    implementor3->setattribute();
+}
+
+void Volunteer::print()
+{
+    cout << "I am a Volunteer." << endl;
+    cout << "I am from " << implementor1->nationality << "." << endl;
+    cout << "My gender is " << implementor2->gender << "." << endl;
+    if (implementor3->participateNumBefore == 0)
+    {
+        cout << "I've never been to the Olympics before. This is my first time." << endl;
+    }
+    else if (implementor3->participateNumBefore == 1)
+    {
+        cout << "I've already been to the Olympics once" << endl;
+    }
 }
 
 
 int testBridge()
 {
-    Implementor* nationality1 = new ChinaNationality;
-    Implementor* nationality2 = new GermanyNationality;
-    Implementor* gender1 = new Male;
-    Implementor* gender2 = new Female;
+    Implementor* china = new ChinaNationality;
+    Implementor* germany = new GermanyNationality;
+    Implementor* neverparticipate = new NeverParticipate;
+    Implementor* participateonce = new ParticipateOnce();
+    Implementor* male = new Male;
+    Implementor* female = new Female;
 
-    Role* coach = new CoachRole(nationality2, gender2);
-    coach->setattribute();
-    coach->print();
+    Role* coach1 = new CoachRole(germany, female, participateonce);
+    coach1->setattribute();
+    coach1->print();
 
-    Role* athlete = new AthleteRole(nationality1, gender1);
-    athlete->setattribute();
-    athlete->print();
+    Role* athlete1 = new AthleteRole(china, male, neverparticipate);
+    athlete1->setattribute();
+    athlete1->print();
 
-    delete coach;
-    delete athlete;
+    Role* volunteer1 = new Volunteer(china, female, neverparticipate);
+    volunteer1->setattribute();
+    volunteer1->print();
 
-    delete nationality1;
-    delete nationality2;
-    delete gender1;
-    delete gender2;
+    delete coach1;
+    delete athlete1;
+    delete volunteer1;
+
+    delete china;
+    delete germany;
+    delete neverparticipate;
+    delete participateonce;
+    delete male;
+    delete female;
 
     cout << endl;
 

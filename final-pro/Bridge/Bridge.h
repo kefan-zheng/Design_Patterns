@@ -11,6 +11,8 @@ public:
 
     string nationality;
     string gender;
+    //参加奥运会总数
+    int participateNumBefore;
 
     virtual void setattribute() = 0;
 };
@@ -28,6 +30,23 @@ class GermanyNationality : public Implementor
 {
 public:
     ~GermanyNationality() {}
+
+    void setattribute();
+};
+
+//参加奥运会记录的具体实现类
+class NeverParticipate : public Implementor
+{
+public:
+    ~NeverParticipate() {}
+
+    void setattribute();
+};
+
+class ParticipateOnce : public Implementor
+{
+public:
+    ~ParticipateOnce() {}
 
     void setattribute();
 };
@@ -54,6 +73,11 @@ public:
 class Role
 {
 public:
+    Implementor* implementor1;
+    Implementor* implementor2;
+    Implementor* implementor3;
+
+    Role(Implementor* impl, Implementor* imp2, Implementor* imp3) : implementor1(impl), implementor2(imp2), implementor3(imp3) {}
     virtual ~Role() {}
 
     virtual void setattribute() = 0;
@@ -63,13 +87,10 @@ public:
 //扩展抽象类的接口
 class CoachRole : public Role
 {
-private:
-    Implementor* implementor1;
-    Implementor* implementor2;
 public:
     ~CoachRole() {}
 
-    CoachRole(Implementor* impl, Implementor* imp2) : implementor1(impl), implementor2(imp2) {}
+    CoachRole(Implementor* impl, Implementor* imp2, Implementor* imp3) : Role(impl, imp2, imp3) {}
 
     void setattribute();
 
@@ -79,18 +100,26 @@ public:
 
 class AthleteRole : public Role
 {
-private:
-    Implementor* implementor1;
-    Implementor* implementor2;
 public:
     ~AthleteRole() {}
 
-    AthleteRole(Implementor* impl, Implementor* imp2) : implementor1(impl), implementor2(imp2) {}
+    AthleteRole(Implementor* impl, Implementor* imp2, Implementor* imp3) : Role(impl, imp2, imp3) {}
 
     void setattribute();
 
     void print();
 
+};
+
+class Volunteer : public Role
+{
+public:
+    ~Volunteer() {};
+    Volunteer(Implementor* impl, Implementor* imp2, Implementor* imp3) : Role(impl, imp2, imp3) {}
+
+    void setattribute();
+
+    void print();
 };
 
 int testBridge();

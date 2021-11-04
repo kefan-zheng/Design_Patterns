@@ -4,6 +4,41 @@
 #include <iostream>
 
 using namespace std;
+
+class Props
+{
+private:
+    string propsName;
+public:
+    ~Props() {}
+    Props(string name) : propsName(name) {}
+
+    string getPropsName() { return propsName; }
+    virtual void display() = 0;
+};
+
+class Timer : public Props
+{
+public:
+    Timer(string name) : Props(name) {}
+    ~Timer() {}
+
+    virtual void display() {
+        cout << "Timer" << endl;
+    }
+};
+
+class Table : public Props
+{
+public:
+    Table(string name) : Props(name) {}
+    ~Table() {}
+
+    virtual void display() {
+        cout << "Table" << endl;
+    }
+};
+
 //本例子中只有一个乒乓球工厂，产生多个比赛项目
  //单人比赛
 class GameProduct
@@ -72,10 +107,12 @@ private:
     vector<double> distanceTravelled;
     //表示运动员比赛成绩
     vector<double> score;
+    Timer* timer;
 public:
     ~RunningGameProduct() {}
     RunningGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
         GameProduct(cN, sT, cS, sName, sNation, cState) {
+        timer = new Timer("timer1");
         elapsedTime = 0;
         distance = 100;
         for (int i = 0; i < sName.size(); ++i)sportsmanState.push_back(0), distanceTravelled.push_back(0), score.push_back(0);
@@ -97,10 +134,12 @@ class TableTennisGameProduct : public GameProduct
 {
 private:
     int Score[2];
+    Table* table;
 public:
     ~TableTennisGameProduct() {};
     TableTennisGameProduct(string cN, string sT, string cS, vector<string>sName, vector<string>sNation, int cState) :
         GameProduct(cN, sT, cS, sName, sNation, cState) {
+        table = new Table("table1");
        Score[0] = Score[1] = 0;
     }
     virtual int getScore1() {
@@ -144,3 +183,4 @@ public:
         return new RunningGameProduct(cN, sT, cS, sName, sNation, cState);
     }
 };
+

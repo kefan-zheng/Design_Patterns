@@ -35,30 +35,30 @@ Game GameBuilder::get()
 
 
 //游泳比赛创建者，继承自抽象比赛建造者
-void SwimmingGameBuilder::buildTime()
+void FencingGameBuilder::buildTime()
 {
     game.setTime("11.06");
 }
-void SwimmingGameBuilder::buildPlace()
+void FencingGameBuilder::buildPlace()
 {
     game.setPlace("SwimmingPool");
 }
-void SwimmingGameBuilder::buildPlayer()
+void FencingGameBuilder::buildPlayer()
 {
     game.setPlayer("Phelps");
 }
 
 
 //跑步比赛创建者，继承自抽象比赛建造者
-void RunningGameBuilder::buildTime()
+void TaekwondoGameBuilder::buildTime()
 {
     game.setTime("11.06");
 }
-void RunningGameBuilder::buildPlace()
+void TaekwondoGameBuilder::buildPlace()
 {
     game.setPlace("TAF-Ground");
 }
-void RunningGameBuilder::buildPlayer()
+void TaekwondoGameBuilder::buildPlayer()
 {
     game.setPlayer("Bolt");
 }
@@ -100,13 +100,13 @@ void Director::construct()
 int testBuilder()
 {
     Director director;
-    director.set(new SwimmingGameBuilder);
+    director.set(new FencingGameBuilder);
     director.construct();
 
     Game game1 = director.get();
     std::cout << "1st game: " << game1.get() << std::endl;
 
-    director.set(new RunningGameBuilder);
+    director.set(new TaekwondoGameBuilder);
     director.construct();
 
     Game game2 = director.get();
