@@ -48,10 +48,10 @@ private:
  * Factory Method
  * provides an abstract interface, preparing for creating various kinds of products
  */
-class SwimmingFactory
+class SwimmingFactory1
 {
 public:
-    virtual ~SwimmingFactory() {}
+    virtual ~SwimmingFactory1() {}
     virtual Swimming* createSwimming() = 0;
 };
 
@@ -76,13 +76,13 @@ public:
  * Concrete Factorys
  * each concrete factory creates one kind of products and client uses these factories
  */
-class ManFreestyle200Factory : public SwimmingFactory
+class ManFreestyle200Factory : public SwimmingFactory1
 {
 public:
     ~ManFreestyle200Factory() {}
     Swimming* createSwimming() { return new ManFreestyle200(); }
 };
-class WomenFreestyle200Factory : public SwimmingFactory
+class WomenFreestyle200Factory : public SwimmingFactory1
 {
 public:
     ~WomenFreestyle200Factory() {}
