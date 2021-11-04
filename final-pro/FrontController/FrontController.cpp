@@ -67,7 +67,7 @@ void Dispatcher::dispatch(string request)
 	}
 	else if (request == "mvc")
 	{
-		testMVC();
+		testMvc();
 	}
 	else if (request == "observer")
 	{

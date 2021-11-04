@@ -1,4 +1,3 @@
-#pragma once
 //
 // Created by xzb23 on 2021/10/23.
 //
@@ -14,30 +13,23 @@ public:
     Player() {};
     ~Player() {};
 
-    string getNation()
+    string getName();
+    void setName(string name);
+    void setScore(int i,int score)
     {
-        return nation;
+        Score[i-1]=score;
     }
-
-    void setNation(string nation)
+    int getScore(int i)
     {
-        this->nation = nation;
+        return Score[i-1];
     }
-
-    string getName()
-    {
-        return name;
-    }
-
-    void setName(string name)
-    {
-        this->name = name;
-    }
-
 private:
-    string nation;
     string name;
+    int Score[3];
 };
+
+
+
 
 //视图View类StudentView
 class PlayerView
@@ -46,56 +38,35 @@ public:
     PlayerView() {};
     ~PlayerView() {};
 
-    void playerDetails(string name, string nation)
-    {
-        cout << "Player: " << endl
-            << "Name: " << name << endl
-            << "Nation: " << nation << endl;
-    }
+    void playerDetails(Player player);
 };
+
+
 
 //controller控制器类StudentController
 class PlayerController
 {
 public:
-    PlayerController(Player model, PlayerView view)
-    {
-        this->model = model;
-        this->view = view;
-    }
-
+    PlayerController(){};
+    PlayerController(Player model, PlayerView view);
     ~PlayerController() {};
 
-    void setPlayerName(string name)
-    {
-        this->model.setName(name);
-    }
+    void setPlayerName(string name);
+    string getPlayerName();
 
-    string getPlayerName()
+    void setPlayerScore(int i,int score)
     {
-        return this->model.getName();
-    }
-
-    void setPlayerNation(string nation)
+        this->model.setScore(i,score);
+    };
+    int getPlayerScore(int i)
     {
-        this->model.setNation(nation);
-    }
-
-    string getPlayerNation()
-    {
-        return this->model.getNation();
-    }
-
-    void updateView()
-    {
-        this->view.playerDetails(this->model.getName(), this->model.getNation());
-    }
-
+        return this->model.getScore(i);
+    };
+    void updateView();
 private:
     Player model;
     PlayerView view;
 };
 
-int testMVC();
-
+int testMvc();
 #endif //MVC_MVC_H
