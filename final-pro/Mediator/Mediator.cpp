@@ -159,7 +159,7 @@ void testMediator() {
 	scoreform->compute(new ScoreCommand(receiver, 1, 1));// 客队得1分
 	scoreform->compute(new ScoreCommand(receiver, 1, 3));// 客队得3分
 
-	p7->send("Please pause the game right now!");//p7要求停止比赛，通知裁判。裁判同意后要求其他运动员也停下
+	p8->send("Please pause the game right now!");//p7要求停止比赛，通知裁判。裁判同意后要求其他运动员也停下
 
 	// 撤销上一次计分
 	scoreform->undo();

@@ -209,6 +209,9 @@
     <ClInclude Include="Delegation\AbstractDelegation.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="utils\animate.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Immutable\input.txt" />

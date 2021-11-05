@@ -1,19 +1,23 @@
 #include<iostream>
 #include"FrontController/FrontController.h"
+#include"./utils/animate.h"
 #include<string>
 
 using namespace std;
 
 int main()
 {
-	cout << "----------------------------------------------------------------\n";
-	cout << "*                       Olympic Game                           *\n";
-	cout << "----------------------------------------------------------------\n";
+	startAnimate();
+
 
 	Dispatcher dispatcher;
 	FrontController frontcontroller;
 	frontcontroller.set(&dispatcher);
 	const string noTestPattern[] = {"flyweight", "command", "frontController", "abstractfactory", "multition", "singleton", "prototype"}; //这些设计模式被合并到了其他设计模式中
+	
+	int preNum = 7;//赛前比赛的场景数量
+	int competitionNum = 9;//比赛的场景
+	
 	for (int i = 0; i < 30; i++)
 	{
 		bool continueFlag = false;
@@ -32,6 +36,16 @@ int main()
 		frontcontroller.dispatchRequest(designpatterns[i]);
 		//system("pause");
 		cout << endl;
+
+		if (i == 0) {
+			transferAnimate1();
+		}
+		else if (i == preNum-1) {
+			transferAnimate2();
+		}
+		else if (i == preNum + competitionNum -1) {
+			transferAnimate3();
+		}
 	}
 	system("pause");
 	return 0;

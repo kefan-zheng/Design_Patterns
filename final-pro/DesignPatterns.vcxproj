@@ -81,6 +81,7 @@
     <ClInclude Include="TemplateMethod\TemplateMethod.h" />
     <ClInclude Include="TransferObject\TransferObject.h" />
     <ClInclude Include="utils\AbstractMedalRanking.h" />
+    <ClInclude Include="utils\animate.h" />
     <ClInclude Include="utils\cct_tools.h" />
     <ClInclude Include="utils\MedalRanking.h" />
     <ClInclude Include="utils\SingletonMedalRanking.h" />

@@ -42,4 +42,5 @@ void cct_setcolor(const int bg_color = COLOR_BLACK, const int fg_color = COLOR_W
 //在特定位置用特定颜色打印相同若干字符
 void cct_showch(const int X, const int Y, const char ch, const int bg_color, const int fg_color, const int rpt);
 
-
+//清除整个屏幕缓冲区，不仅仅是可见窗口区域(使用当前颜色)
+void cct_cls(void);
