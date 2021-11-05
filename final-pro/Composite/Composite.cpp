@@ -1,5 +1,5 @@
 #include "Composite.h"
-void testComposite() {
+int testComposite() {
 	//第一层，为复合比赛
 	CompositeEvents* overallEvents=new CompositeEvents("Olympics");
 	//第二层，均为复合比赛
@@ -28,4 +28,8 @@ void testComposite() {
 	badminton->add(new SingleEvents("Women's final", "2021-07-27 21:30:00", "Badminton room"));
 	//展示
 	overallEvents->show();
+	cout << "After the removal of swimming: \n\n";
+	overallEvents->remove(swimming,overallEvents);
+	overallEvents->show();
+	return 0;
 }

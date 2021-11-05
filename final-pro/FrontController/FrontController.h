@@ -27,6 +27,7 @@
 #include"../TemplateMethod/TemplateMethod.h"
 #include"../TransferObject/TransferObject.h"
 #include"../Visitor/Visitor.h"
+#include"../utils/cct_tools.h"
 
 using namespace std;
 

@@ -47,6 +47,7 @@
     <ClCompile Include="TemplateMethod\TemplateMethod.cpp" />
     <ClCompile Include="TransferObject\TransferObject.cpp" />
     <ClCompile Include="utils\AbstractMedalRanking.cpp" />
+    <ClCompile Include="utils\cct_tools.cpp" />
     <ClCompile Include="Visitor\Visitor.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +58,7 @@
     <ClInclude Include="ChainOfResponsibility\ChainOfResponsibility.h" />
     <ClInclude Include="Command\Command.h" />
     <ClInclude Include="Composite\Composite.h" />
+    <ClInclude Include="Composite\LinkList.h" />
     <ClInclude Include="Decorator\Decorator.h" />
     <ClInclude Include="Delegation\Delegation.h" />
     <ClInclude Include="Facade\Facade.h" />
@@ -78,6 +80,7 @@
     <ClInclude Include="TemplateMethod\TemplateMethod.h" />
     <ClInclude Include="TransferObject\TransferObject.h" />
     <ClInclude Include="utils\AbstractMedalRanking.h" />
+    <ClInclude Include="utils\cct_tools.h" />
     <ClInclude Include="utils\MedalRanking.h" />
     <ClInclude Include="utils\SingletonMedalRanking.h" />
     <ClInclude Include="Visitor\Visitor.h" />

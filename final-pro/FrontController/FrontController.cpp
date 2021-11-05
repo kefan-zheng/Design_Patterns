@@ -128,7 +128,10 @@ void FrontController::trackRequest(string request)
 	else if (request == "templateMethod") {
 		request += " && flyweight";
 	}
+	//改变输出颜色
+	cct_setcolor(COLOR_BLACK, COLOR_HGREEN);
 	cout << "design pattern request:" << request << endl;
+	cct_setcolor();
 }
 
 void FrontController::set(Dispatcher* d)
