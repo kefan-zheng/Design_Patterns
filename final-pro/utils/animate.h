@@ -141,38 +141,72 @@ void startAnimate() {
 	cct_cls();
 }
 
-void transferAnimate1() {
+void transferFrame0() {
 	cct_cls();
-	cout << "Preparation for Olympic Games\n";
-	cout << "=============================================================================================\n";
-	cout << "#                     Design Pattern Project -- Olympic Games                               #\n";
-	cout << "---------------------------------------------------------------------------------------------\n";
-	cout << "#                                     DESIGNED BY                                           #\n";
-	cout << "# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #\n";
-	cout << "#               Kefan zheng           Fengyuan cao            Hangyu Li                     #\n";
-	cout << "#                            Zhibo Xu             Zihao Yang                                #\n";
-	cout << "#               Panwei Zhu            Maosen Huang            QuanDeng                      #\n";
-	cout << "# ----------------------------------------------------------------------------------------- #\n";
-	cout << "#                                                                                           #\n";
-	cout << "#     ! * *       !         !       *      !     !       ! * * *      * * *     * * * *     #\n";
-	cout << "#    !     *      !          !     *       !     !       !      *       !       !           #\n";
-	cout << "#   !       *     !           !   *       ! !   ! !      !      *       !       !           #\n";
-	cout << "#  !         *    !            ! *        ! !   ! !      ! * * *        !       !           #\n";
-	cout << "#   !       *     !             !        !   ! !   !     !              !       !           #\n";
-	cout << "#    !     *      !             !        !   ! !   !     !              !       !           #\n";
-	cout << "#     ! * *       ! * * *       !       !     !     !    1            * * *     ! * * *     #\n";
-	cout << "#                                                                                           #\n";
-	cout << "------------------------------------------------------------------------------------------- #\n";
-	cout << "#                                   TONGJI UNIVERSITY                                       #\n";
-	cout << "=============================================================================================\n";
+	cout << "==============================================================================================\n";
+	cout << "#                          Design Pattern Project -- Olympic Games                           #\n";
+	cout << "----------------------------------------------------------------------------------------------\n";
+	cout << "#                                                                                            #\n";
+	cout << "#              1.Preparations before the official start of the Olympic Games                 #\n";
+	cout << "#                                                                                            #\n";
+	cout << "#                        2.The various events of the Olympic Games                           #\n";
+	cout << "#                                                                                            #\n";
+	cout << "#                                    3.Other Scenes                                          #\n";
+	cout << "==============================================================================================\n";
 }
 
-void transferAnimate2() {
+void transferFrame1() {
 	cct_cls();
-	system("cls");
+	cout << "==============================================================================================\n";
+	cout << "#                          Design Pattern Project -- Olympic Games                           #\n";
+	cout << "----------------------------------------------------------------------------------------------\n";
+	cout << "#                                                                                            #\n";
+	cct_setcolor(COLOR_BLACK, COLOR_HRED);
+	cout << "#              1.Preparations before the official start of the Olympic Games                 #\n";
+	cct_setcolor();
+	cout << "#                                                                                            #\n";
+	cout << "#                        2.The various events of the Olympic Games                           #\n";
+	cout << "#                                                                                            #\n";
+	cout << "#                                    3.Other Scenes                                          #\n";
+	cout << "==============================================================================================\n";
 }
 
-void transferAnimate3() {
+void transferFrame2() {
 	cct_cls();
-	system("cls");
+	cout << "==============================================================================================\n";
+	cout << "#                          Design Pattern Project -- Olympic Games                           #\n";
+	cout << "----------------------------------------------------------------------------------------------\n";
+	cout << "#                                                                                            #\n";
+	cout << "#              1.Preparations before the official start of the Olympic Games                 #\n";
+	cout << "#                                                                                            #\n";
+	cct_setcolor(COLOR_BLACK, COLOR_HRED);
+	cout << "#                        2.The various events of the Olympic Games                           #\n";
+	cct_setcolor();
+	cout << "#                                                                                            #\n";
+	cout << "#                                    3.Other Scenes                                          #\n";
+	cout << "==============================================================================================\n";
+}
+
+void transferFrame3() {
+	cct_cls();
+	cout << "==============================================================================================\n";
+	cout << "#                          Design Pattern Project -- Olympic Games                           #\n";
+	cout << "----------------------------------------------------------------------------------------------\n";
+	cout << "#                                                                                            #\n";
+	cout << "#              1.Preparations before the official start of the Olympic Games                 #\n";
+	cout << "#                                                                                            #\n";
+	cout << "#                        2.The various events of the Olympic Games                           #\n";
+	cout << "#                                                                                            #\n";
+	cct_setcolor(COLOR_BLACK, COLOR_HRED);
+	cout << "#                                    3.Other Scenes                                          #\n";
+	cct_setcolor();
+	cout << "==============================================================================================\n";
+}
+
+void transferAnimate(int frame1, int frame2) {
+	
+	void (*p[4])() = { transferFrame0, transferFrame1, transferFrame2, transferFrame3 };//四个函数指针，对应四个帧
+	p[frame1]();//前一帧
+	Sleep(1000);
+	p[frame2]();//后一帧数
 }

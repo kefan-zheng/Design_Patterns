@@ -33,18 +33,21 @@ int main()
 			continue;
 		}
 
+		//三个主场景之间的过渡动画
 		if (i == 0) {
 			system("pause");
-			transferAnimate1();
+			transferAnimate(0, 1);
+			system("pause");
 		}
 		else if (i == preNum-1) {
 			system("pause");
-			transferAnimate2();
+			transferAnimate(1, 2);
+			system("pause");
 		}
 		else if (i == preNum + competitionNum -1) {
 			system("pause");
-			transferAnimate3();
-
+			transferAnimate(3, 3);
+			system("pause");
 		}
 
 		frontcontroller.dispatchRequest(designpatterns[i]);
