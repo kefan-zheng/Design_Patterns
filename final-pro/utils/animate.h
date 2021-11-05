@@ -121,7 +121,7 @@ void startAnimate5() {
 	cout << "=============================================================================================\n";
 }
 
-int delayTime = 1000;
+int delayTime = 600;
 void startAnimate() {
 	cct_cls();;
 	startAnimate1();
@@ -232,6 +232,6 @@ void transferAnimate(int frame1, int frame2) {
 	
 	void (*p[5])() = { transferFrame0, transferFrame1, transferFrame2, transferFrame3, transferFrame4 };//四个函数指针，对应四个帧
 	p[frame1]();//前一帧
-	Sleep(1000);
+	Sleep(700);
 	p[frame2]();//后一帧数
 }
