@@ -1,3 +1,4 @@
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -6,97 +7,9 @@
 #include<numeric>
 #include<deque>
 #include<time.h>
-#include "mvc.h"
 #include<functional>
+#include "mvc.h"
 using namespace std;
-
-void CreatePlayer(map<int, PlayerController>&plays, vector<int>&v1)//创建选手
-{
-    string No = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    for (int i = 0; i < 24; i++)
-    {
-        Player p;
-        string name(1,No[i]);
-        p.setName("player"+name);
-        p.setName("Player"+name);
-        PlayerView pv;
-        PlayerController pc(p,pv);
-
-        plays.insert(pair<int, PlayerController>(1 + i, pc));
-        v1.push_back(1 + i);
-    }
-}
-void disorganize(vector<int>&v)//打乱选手
-{
-    cout << "----------Promotion event----------" << endl;
-    random_shuffle(v.begin(), v.end());
-}
-
-void game(int index,map<int, PlayerController>&plays, vector<int>&AInput, vector<int>&AOut)//比赛
-{
-    multimap<int, int, greater<int> >TempScore;
-    int couts = 0;
-    for (vector<int>::iterator it = AInput.begin(); it != AInput.end();++it)
-    {
-        couts++;
-        deque<int>score;
-        for (int i = 0; i < 10; i++)
-        {
-            score.push_back(rand() % 40 + 60);
-        }
-        sort(score.begin(), score.end());
-        score.pop_front();
-        score.pop_back();
-        int Sumscore = accumulate(score.begin(), score.end(), 0);
-        int Avg = Sumscore / score.size();
-        plays[*it].setPlayerScore(index,Avg);
-        TempScore.insert(pair<int, int>(Avg, *it));
-        if (couts%6==0)
-        {
-            cout << "Group Stage results" << endl;
-            for (multimap<int, int, greater<int> >::iterator it = TempScore.begin(); it
-                                                                                    != TempScore.end();++it)
-            for (multimap<int, int, greater<int> >::iterator it = TempScore.begin(); it!= TempScore.end();++it)
-            {
-                //编号 姓名 得分
-                cout << "No: "<< (*it).second <<"\t"<< plays[(*it).second].getPlayerName() <<
-                     "\t" << (*it).first << endl;
-            }
-            while (TempScore.size()>3)
-            {
-                multimap<int, int, greater<int> >::iterator lit=TempScore.begin();
-                AOut.push_back(lit->second);
-                TempScore.erase(lit);
-            }
-            cout << endl;
-            TempScore.clear();
-        }
-    }
-}
-
-void gameresult(int index,map<int, PlayerController>&plays,vector<int>&AOut)//打印比赛结果
-{
-    cout << index << " " <<" "<< "round" << endl;
-    for (vector<int>::iterator it = AOut.begin(); it != AOut.end();++it)
-    {
-        //编号 姓名 得分
-        cout << "No: " << *it << "\t" << plays[*it].getPlayerName() << "\t" <<
-             plays[*it].getPlayerScore(index) << endl;
-        cout << "No: " << *it << "\t" ;
-        plays[*it].updateView(index);
-        cout<<endl;
-    }
-}
-
-string Player::getName()
-{
-    return name;
-}
-
-void Player::setName(string name)
-{
-    this->name = name;
-}
 
 PlayerController::PlayerController(Player model, PlayerView view)
 {
@@ -116,15 +29,105 @@ string PlayerController::getPlayerName()
 
 void PlayerController::updateView(int i)
 {
-    this->view.playerDetails(model, i);
+    this->view.playerDetails(model,i);
 }
-
-void PlayerView::playerDetails(Player player, int i)
+void PlayerView::playerDetails(Player player,int i)
 {
-    cout << player.getName() << " " << player.getScore(i);
+    cout <<player.getName()<<" "<<player.getScore(i);
 }
 
+string Player ::getName()
+{
+    return name;
+}
 
+void Player::setName(string name)
+{
+    this->name = name;
+}
+//class player
+//{
+//public:
+//    string name;
+//    int Score[3];
+//};
+
+void CreatePlayer(map<int, PlayerController>&plays, vector<int>&v1)//创建选手
+{
+    string No = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    for (int i = 0; i < 24; i++)
+    {
+        Player p;
+        string name(1,No[i]);
+        p.setName("Player"+name);
+        PlayerView pv;
+        PlayerController pc(p,pv);
+
+        plays.insert(pair<int, PlayerController>(1 + i, pc));
+        v1.push_back(1 + i);
+    }
+}
+void disorganize(vector<int>&v)//打乱选手
+{
+    cout << "-------New Round Competition-----" << endl;
+    random_shuffle(v.begin(), v.end());
+}
+
+void game(int index,map<int, PlayerController>&plays, vector<int>&AInput, vector<int>&AOut)//比赛
+{
+    multimap<int, int, greater<int>>TempScore;
+    int couts = 0;
+
+    for (vector<int>::iterator it = AInput.begin(); it != AInput.end();++it)
+    {
+        couts++;
+        deque<int>score;
+        for (int i = 0; i < 10; i++)
+        {
+            score.push_back(rand() % 40 + 60);
+        }
+        sort(score.begin(), score.end());
+        score.pop_front();
+        score.pop_back();
+        int Sumscore = accumulate(score.begin(), score.end(), 0);
+        int Avg = Sumscore / score.size();
+        plays[*it].setPlayerScore(index,Avg);
+        TempScore.insert(pair<int, int>(Avg, *it));
+        if (couts%6==0)
+        {
+            cout << "Group Competition Results" << endl;
+            for (multimap<int, int, greater<int>>::iterator it = TempScore.begin(); it
+                                                                                    != TempScore.end();++it)
+            {
+                //编号 姓名 得分
+                cout << "No: "<< (*it).second <<"\t"<< plays[(*it).second].getPlayerName() <<
+                     "\t" << (*it).first << endl;
+            }
+            while (TempScore.size()>3)
+            {
+                multimap<int, int, greater<int>>::iterator lit=TempScore.begin();
+                AOut.push_back(lit->second);
+                TempScore.erase(lit);
+            }
+            cout << endl;
+            TempScore.clear();
+        }
+    }
+}
+
+void gameresult(int index,map<int, PlayerController>&plays,vector<int>&AOut)//打印比赛结果
+{
+    cout << " " << index << " round" <<" "<< "promotion list" << endl;
+    for (vector<int>::iterator it = AOut.begin(); it != AOut.end();++it)
+    {
+        //编号 姓名 得分
+//        cout << "No: " << *it << "\t" << plays[*it].getPlayerName() << "\t" <<
+//             plays[*it].getPlayerScore(index) << endl;
+        cout<<"No: "<<*it<<"\t";
+        plays[*it].updateView(index);
+        cout<<"\t"<<endl;
+    }
+}
 int testMvc()
 {
     srand(time(0));

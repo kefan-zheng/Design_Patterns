@@ -29,7 +29,8 @@ private:
 };
 
 
-//ÊÓÍ¼ViewÀàStudentView
+
+//ï¿½ï¿½Í¼Viewï¿½ï¿½StudentView
 class PlayerView
 {
 public:
@@ -38,9 +39,7 @@ public:
 
     void playerDetails(Player player,int i);
 };
-
-
-//controller¿ØÖÆÆ÷ÀàStudentController
+//controllerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½StudentController
 class PlayerController
 {
 public:
@@ -64,7 +63,5 @@ private:
     Player model;
     PlayerView view;
 };
-
-
 int testMvc();
 #endif //MVC_MVC_H

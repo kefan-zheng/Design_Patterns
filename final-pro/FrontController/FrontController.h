@@ -50,7 +50,7 @@ const string designpatterns[30] = {
 "visitor",//足球
 "mediator",//(command)篮球
 "mvc","state",//铁人三项介绍与过程
-"transferobject","interpreter",//羽毛球
+"transferobject",//羽毛球
 "specification",//举重
 
 //其他
@@ -60,7 +60,7 @@ const string designpatterns[30] = {
 "chainofresponsibility", //申诉
 
 //下面所有设计模式被合并到其他设计模式测试函数中
-"flyweight","command","frontController","abstractfactory","multition", "singleton" ,"prototype" 
+"flyweight","command","frontController","abstractfactory","multition", "singleton" ,"prototype" ,"interpreter"
 };
 //, "privateClassData";考虑删除的多余设计模式
 

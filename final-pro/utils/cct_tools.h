@@ -1,6 +1,6 @@
 #pragma once
 #include<iostream>
-#include <graphics.h>
+//#include <graphics.h>
 #include <conio.h>
 #include<fstream>
 #include<iomanip>

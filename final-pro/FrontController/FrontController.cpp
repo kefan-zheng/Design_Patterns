@@ -197,6 +197,9 @@ void FrontController::trackRequest(string request)
 	else if (request == "templateMethod") {
 		request += " && flyweight";
 	}
+	else if (request == "transferobject") {
+		request += " && interpreter";
+	}
 	
 	//输出场景提示
 	cout << "---------------------------------------------------------------------------\n\n";
