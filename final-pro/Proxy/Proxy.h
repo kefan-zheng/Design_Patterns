@@ -29,4 +29,5 @@ private:
 
 int testProxy();
 
+int testProxy();
 #endif // !_PROXY_H_
