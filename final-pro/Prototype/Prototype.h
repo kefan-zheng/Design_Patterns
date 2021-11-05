@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include "AbstractDelegation.h"
+#include "../Delegation/AbstractDelegation.h"
 
 class Referee : public Delegation
 {
