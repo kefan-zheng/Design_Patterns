@@ -35,7 +35,7 @@ void Female::setattribute()
     gender = "female";
 }
 
-//扩展抽象类的接口
+//通过具体实现类设置属性
 void CoachRole::setattribute()
 {
     implementor1->setattribute();
@@ -58,6 +58,7 @@ void CoachRole::print()
     }
 }
 
+//通过具体实现类设置属性
 void AthleteRole::setattribute()
 {
     implementor1->setattribute();
@@ -80,6 +81,7 @@ void AthleteRole::print()
     }
 }
 
+//通过具体实现类设置属性
 void Volunteer::setattribute()
 {
     implementor1->setattribute();

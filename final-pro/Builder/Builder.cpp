@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//比赛对象的基本修改信息函数
 void Game::setTime(const string& part)
 {
     time = part;
@@ -25,7 +26,6 @@ string Game::get()
 }
 
 
-
 //创建比赛的抽象接口
 //获取比赛
 Game GameBuilder::get()
@@ -34,7 +34,7 @@ Game GameBuilder::get()
 }
 
 
-//游泳比赛创建者，继承自抽象比赛建造者
+//击剑比赛创建者，继承自抽象比赛建造者
 void FencingGameBuilder::buildTime()
 {
     game.setTime("11.06");
@@ -49,7 +49,7 @@ void FencingGameBuilder::buildPlayer()
 }
 
 
-//跑步比赛创建者，继承自抽象比赛建造者
+//跆拳道比赛创建者，继承自抽象比赛建造者
 void TaekwondoGameBuilder::buildTime()
 {
     game.setTime("11.06");
@@ -96,7 +96,7 @@ void Director::construct()
 }
 
 //测试函数
-//创建游泳比赛和跑步比赛
+//创建击剑比赛和跆拳道比赛
 int testBuilder()
 {
     Director director;

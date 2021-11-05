@@ -84,7 +84,7 @@ public:
     virtual void print() = 0;
 };
 
-//扩展抽象类的接口
+//扩展抽象类的接口，分为教练、运动员、志愿者三个角色
 class CoachRole : public Role
 {
 public:

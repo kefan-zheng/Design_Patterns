@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//比赛对象信息类
 class Game
 {
 private:
@@ -38,7 +39,7 @@ public:
 
 };
 
-//游泳比赛创建者，继承自抽象比赛建造者
+//击剑比赛创建者，继承自抽象比赛建造者
 class FencingGameBuilder : public GameBuilder
 {
 public:
@@ -48,7 +49,7 @@ public:
 };
 
 
-//跑步比赛创建者，继承自抽象比赛建造者
+//跆拳道比赛创建者，继承自抽象比赛建造者
 class TaekwondoGameBuilder : public GameBuilder
 {
 public:
@@ -75,5 +76,5 @@ public:
 };
 
 //测试函数
-//创建游泳比赛和跑步比赛
+//创建击剑比赛和跆拳道比赛
 int testBuilder();

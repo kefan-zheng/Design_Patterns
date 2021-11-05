@@ -5,6 +5,8 @@
 
 using namespace std;
 
+//比赛道具类
+//不同比赛拥有不同的比赛道具
 class Props
 {
 private:
@@ -17,6 +19,7 @@ public:
     virtual void display() = 0;
 };
 
+//计时器，用于百米赛跑比赛
 class Timer : public Props
 {
 public:
@@ -28,6 +31,7 @@ public:
     }
 };
 
+//球桌，用于乒乓球比赛
 class Table : public Props
 {
 public:
@@ -39,8 +43,7 @@ public:
     }
 };
 
-//本例子中只有一个乒乓球工厂，产生多个比赛项目
- //单人比赛
+//比赛的抽象类
 class GameProduct
 {
 private:
@@ -157,7 +160,6 @@ public:
 
 
 //抽象工厂
-
 class AbstractFactory
 {
 public:
