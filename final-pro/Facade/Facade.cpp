@@ -1,4 +1,5 @@
 #include "Facade.h"
+#include "../utils/cct_tools.h"
 
 vector<HotelInfo*> Hotel::hotelList;
 
@@ -61,6 +62,10 @@ void Facade::CheckIn()
 
 void testFacade()
 {
+    cct_setcolor(COLOR_BLACK, COLOR_HBLUE);
+    cout << "Now Players all over the world are coming to the Olyic Village.\n\n";
+    cct_setcolor();
+
     Facade _facade;
     cout << "Players from China are Coming to the Olympic Villiage.\n";
     _facade.CheckIn();

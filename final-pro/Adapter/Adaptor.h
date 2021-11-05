@@ -1,6 +1,5 @@
-#pragma once
 /*
- * C++ Design Patterns: ForeignTranslator (Object scope)
+ * C++ Design Patterns: VolunteerTranslator (Object scope)
  * Author: Zhibo Xu
  * 2021/10
  *
@@ -10,15 +9,18 @@
  */
 
 #include <iostream>
-
+using std::string;
+using std::cout;
+using std::endl;
  /*
-  * Foreigner
+  * Volunteer
   * defines specific interface that Client uses
   */
-class Foreigner
+class Volunteer1
 {
 public:
-    virtual ~Foreigner() {}
+
+    virtual ~Volunteer1() {}
 
     virtual void request() = 0;
     // ...
@@ -27,30 +29,49 @@ public:
 /*
  * Mandarine
  * defines an existing interface that needs adapting and thanks
- * to ForeignTranslator it will get calls that client makes on the Foreigner
+ * to VolunteerTranslator it will get calls that client makes on the Volunteer
  *
  */
-class Mandarin
+class ForeignLanguage
 {
+    string nation;
+    string languageType;
 public:
+    ForeignLanguage(){};
+    ForeignLanguage(std::string nation,std::string language)
+    {
+      this->nation=nation;
+      this->languageType=language;
+    };
     void specificRequest()
     {
-        std::cout << "Translate to their own language" << std::endl;
-    }
+        cout << "translate content to "<<this->getLanguageType()<<".";
+    };
+    string getNation()
+    {
+        return this->nation;
+    };
+    string getLanguageType()
+    {
+        return this->languageType;
+    };
     // ...
 };
 
 /*
- * ForeignTranslator
- * implements the Foreigner interface and when it gets a method call it
+ * VolunteerTranslator
+ * implements the Volunteer interface and when it gets a method call it
  * delegates the call to a Mandarine
  */
-class ForeignTranslator : public Foreigner
+class VolunteerTranslator : public Volunteer1
 {
 public:
-    ForeignTranslator() : adaptee() {}
-
-    ~ForeignTranslator()
+    VolunteerTranslator(ForeignLanguage* adptee2)
+    {
+        this->adaptee=new ForeignLanguage();
+        this->adaptee=adptee2;
+    }
+    ~VolunteerTranslator()
     {
         delete adaptee;
     }
@@ -61,14 +82,12 @@ public:
         // ...
     }
     // ...
-
 private:
-    Mandarin* adaptee;
+    ForeignLanguage* adaptee;
     // ...
 };
 
-int testAdaptor();
-
+void testAdaptor();
 
 
 
