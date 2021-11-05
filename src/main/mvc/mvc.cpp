@@ -18,7 +18,7 @@ void CreatePlayer(map<int, PlayerController>&plays, vector<int>&v1)//创建选�
     {
         Player p;
         string name(1,No[i]);
-        p.setName("player"+name);
+        p.setName("Player"+name);
         PlayerView pv;
         PlayerController pc(p,pv);
 
@@ -55,8 +55,7 @@ void game(int index,map<int, PlayerController>&plays, vector<int>&AInput, vector
         if (couts%6==0)
         {
             cout << "Group Stage results" << endl;
-            for (multimap<int, int, greater<int>>::iterator it = TempScore.begin(); it
-                                                                                    != TempScore.end();++it)
+            for (multimap<int, int, greater<int>>::iterator it = TempScore.begin(); it!= TempScore.end();++it)
             {
                 //编号 姓名 得分
                 cout << "No: "<< (*it).second <<"\t"<< plays[(*it).second].getPlayerName() <<
@@ -80,8 +79,9 @@ void gameresult(int index,map<int, PlayerController>&plays,vector<int>&AOut)//�
     for (vector<int>::iterator it = AOut.begin(); it != AOut.end();++it)
     {
         //编号 姓名 得分
-        cout << "No: " << *it << "\t" << plays[*it].getPlayerName() << "\t" <<
-             plays[*it].getPlayerScore(index) << endl;
+        cout << "No: " << *it << "\t" ;
+        plays[*it].updateView(index);
+        cout<<endl;
     }
 }
 int main()

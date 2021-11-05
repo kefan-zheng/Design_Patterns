@@ -46,13 +46,12 @@ public:
     PlayerView() {};
     ~PlayerView() {};
 
-    void playerDetails(Player player);
+    void playerDetails(Player player,int i);
 };
 
-void PlayerView::playerDetails(Player player)
+void PlayerView::playerDetails(Player player,int i)
 {
-    cout << "Player: " << endl
-         << "Nation: " << player.getName()<< endl;
+    cout <<player.getName()<<" "<<player.getScore(i);
 }
 
 //controller控制器类StudentController
@@ -74,7 +73,7 @@ public:
     {
         return this->model.getScore(i);
     };
-    void updateView();
+    void updateView(int i);
 private:
     Player model;
     PlayerView view;
@@ -96,8 +95,8 @@ string PlayerController::getPlayerName()
     return this->model.getName();
 }
 
-void PlayerController::updateView()
+void PlayerController::updateView(int i)
 {
-    this->view.playerDetails(model);
+    this->view.playerDetails(model,i);
 }
 #endif //MVC_MVC_H
