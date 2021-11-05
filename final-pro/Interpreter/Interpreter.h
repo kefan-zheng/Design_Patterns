@@ -47,8 +47,8 @@ class PlayerNode : public AbstractNode
 {
 private:
 	string current;
-	string player1 = "Lin";
-	string player2 = "Li";
+	string player1 = "Robert";
+	string player2 = "John";
 public:
 	PlayerNode(string current);
 	string interpret();
@@ -100,5 +100,3 @@ public:
 	void handle(string instruction);
 	string output();
 };
-
-int testInterpreter();

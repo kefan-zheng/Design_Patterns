@@ -93,9 +93,6 @@
     <ClCompile Include="Command\Command.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Interpreter\Interpreter.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="TransferObject\TransferObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>

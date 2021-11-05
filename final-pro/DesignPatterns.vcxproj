@@ -33,7 +33,6 @@
     <ClCompile Include="Flyweight\Flyweight.cpp" />
     <ClCompile Include="FrontController\FrontController.cpp" />
     <ClCompile Include="Immutable\Immutable.cpp" />
-    <ClCompile Include="Interpreter\Interpreter.cpp" />
     <ClCompile Include="Iterator\Iterator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mediator\Mediator.cpp" />

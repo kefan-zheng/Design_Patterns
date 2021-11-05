@@ -40,7 +40,7 @@ public:
 };
 
 // 业务对象
-class SerialNoBO
+class AthleteBO
 {
 private:
 	//列表是当作一个数据库

@@ -51,7 +51,7 @@ void Dispatcher::dispatch(string request)
 	}
 	else if (request == "interpreter")
 	{
-		testInterpreter();
+		//testInterpreter();
 	}
 	else if (request == "iterator")
 	{
