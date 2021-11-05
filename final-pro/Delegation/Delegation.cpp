@@ -1,4 +1,5 @@
 #include "Delegation.h"
+#include "AbstractDelegation.h"
 #include <map>
 using namespace std;
 

@@ -60,6 +60,7 @@
     <ClInclude Include="Composite\Composite.h" />
     <ClInclude Include="Composite\LinkList.h" />
     <ClInclude Include="Decorator\Decorator.h" />
+    <ClInclude Include="Delegation\AbstractDelegation.h" />
     <ClInclude Include="Delegation\Delegation.h" />
     <ClInclude Include="Facade\Facade.h" />
     <ClInclude Include="FactoryMethod\Swimming.h" />

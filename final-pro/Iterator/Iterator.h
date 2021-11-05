@@ -7,20 +7,20 @@
 #include <iostream>
 #include <vector>
 #include<string>
-#include "cstdlib"
+#include <cstdlib>
 using std::string;
 using std::cout;
 using std::cin;
 class Iterator;
 class ConcreteAggregate;
-class Delegation
+class Delegation1
 {
 private:
     string nation;//所属国家地区
     int playerNum;//运动员人数
     int order;//enter order
 public:
-    Delegation()
+    Delegation1()
     {
         this->playerNum=0;
         this->order=0;
@@ -64,7 +64,7 @@ class ConcreteAggregate : public Aggregate
 public:
     ConcreteAggregate(unsigned int size)
     {
-        list = new Delegation[size];
+        list = new Delegation1[size];
         count = size;
         exist=0;
     }
@@ -94,7 +94,7 @@ public:
     // ...
 
 private:
-    Delegation* list;
+    Delegation1* list;
     unsigned int count;//capacity
     int exist;//number of teams that already exist
     // ...

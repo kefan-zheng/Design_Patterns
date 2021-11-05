@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 #include<iomanip>
-#include "Prototype.h"
+#include "../Prototype/Prototype.h"
 //take diving as example
 
 class Diver : public Delegation

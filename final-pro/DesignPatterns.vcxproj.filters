@@ -206,6 +206,9 @@
     <ClInclude Include="utils\cct_tools.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Delegation\AbstractDelegation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Immutable\input.txt" />
