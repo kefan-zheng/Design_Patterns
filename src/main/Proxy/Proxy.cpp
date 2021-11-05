@@ -10,6 +10,9 @@ OlympicDrugTextResult::OlympicDrugTextResult() {}
 OlympicDrugTextResult::~OlympicDrugTextResult() {}
 void OlympicDrugTextResult::check()
 {
+	cout << "Querying athlete information..." << endl;
+	cout << "Athlete information verified successfully... " << endl;
+	cout << "Returning drug test results ..." << endl;
 	cout << "The drug test came back negative !" << endl;
 }
 Proxy::Proxy()
@@ -22,8 +25,10 @@ Proxy::~Proxy()
 }
 void Proxy::check()
 {
+	cout << "Athlete wants to view drug test results !" << endl;
+	cout << "Query results through an agent ..." << endl;
 	cout << "Checking the results from the Olympic Drug Testing Center ..." << endl;
-	cout << "The result is :";
+	cout << "The agent connects to the drug test center..." << endl;
 	result->check();
 }
 int main()
