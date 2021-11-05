@@ -1,9 +1,10 @@
 #pragma once
-#include <cstdio>
+#include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "AbstractDelegation.h"
 
-class Referee
+class Referee : public Delegation
 {
 public:
     Referee() {}
@@ -13,6 +14,7 @@ public:
     virtual Referee* Clone() { return new Referee(*this); }
     double score()
     {
+        std::cout << "Referee::score()\n";
         return double(rand() % 100) / 10;
     }
 
