@@ -63,12 +63,12 @@ void Facade::CheckIn()
 void testFacade()
 {
     Facade _facade;
-    cout << "Players from China are Coming to the Olympic Villiage.\n";
+    cout << "Players from China are Coming to the Olympic Village.\n";
     _facade.CheckIn();
     _facade.Detection();
     _facade.AppointTraining();
 
-    cout << "\nPlayers from Japan are Coming to the Olympic Villiage.\n";
+    cout << "\nPlayers from Japan are Coming to the Olympic Village.\n";
     _facade.CheckIn();
     _facade.Detection();
     _facade.AppointTraining();

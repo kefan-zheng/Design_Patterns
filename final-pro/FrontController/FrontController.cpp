@@ -141,7 +141,7 @@ void outputScene(string request) {
 		cout << "Diving competition";
 	}
 	else if (request == "decorator") {
-		cout << "Table tennis competition \nRunning competion";
+		cout << "Table tennis competition \nRunning competition";
 	}
 	else if (request == "visitor") {
 		cout << "Football Game";
