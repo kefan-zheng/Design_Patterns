@@ -41,11 +41,11 @@ void FencingGameBuilder::buildTime()
 }
 void FencingGameBuilder::buildPlace()
 {
-    game.setPlace("SwimmingPool");
+    game.setPlace("Fencing-Hall");
 }
 void FencingGameBuilder::buildPlayer()
 {
-    game.setPlayer("Phelps");
+    game.setPlayer("Yiwen Sun && Popescu");
 }
 
 
@@ -60,7 +60,7 @@ void TaekwondoGameBuilder::buildPlace()
 }
 void TaekwondoGameBuilder::buildPlayer()
 {
-    game.setPlayer("Bolt");
+    game.setPlayer("Bolt && Shuai Zhao");
 }
 
 //导演类，指导具体比赛的建造
@@ -102,6 +102,8 @@ int testBuilder()
     Director director;
     director.set(new FencingGameBuilder);
     director.construct();
+
+    std:cout << "The next two games are as follows:\n";
 
     Game game1 = director.get();
     std::cout << "1st game: " << game1.get() << std::endl;

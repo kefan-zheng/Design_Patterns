@@ -6,6 +6,10 @@ using namespace std;
 
 int main()
 {
+	cout << "----------------------------------------------------------------\n";
+	cout << "*                       Olympic Game                           *\n";
+	cout << "----------------------------------------------------------------\n";
+
 	Dispatcher dispatcher;
 	FrontController frontcontroller;
 	frontcontroller.set(&dispatcher);

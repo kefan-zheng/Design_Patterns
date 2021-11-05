@@ -10,6 +10,7 @@ void Hospital::AccountingDetection()
 HotelInfo::HotelInfo(string h, string l) :
     hotelName(h), location(l) {}
 
+// 采用多例模式创建的酒店
 void Hotel::CheckIn()
 {
     if (hotelList.size() == 0) {
@@ -32,7 +33,7 @@ void Hotel::Sampling()
 
 void Transportation::GetVehicle()
 {
-    cout << "A special bus has been arranged to serve you." << endl;
+    cout << "A special bus has been arranged to serve them." << endl;
 }
 
 void Training::TrainingLocation()
@@ -61,8 +62,16 @@ void Facade::CheckIn()
 void testFacade()
 {
     Facade _facade;
+    cout << "Players from China are Coming to the Olympic Villiage.\n";
     _facade.CheckIn();
     _facade.Detection();
     _facade.AppointTraining();
+
+    cout << "\nPlayers from Japan are Coming to the Olympic Villiage.\n";
+    _facade.CheckIn();
+    _facade.Detection();
+    _facade.AppointTraining();
+
+    cout << "\nPlayers from other countrys are coming to to Olympic Village...\n";
     //system("pause");
 }

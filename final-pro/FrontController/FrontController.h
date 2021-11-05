@@ -33,16 +33,16 @@ using namespace std;
 const string designpatterns[30] = { 
 
 //比赛前对应的几个设计模式
+"facade",//(mutition)入住奥运村
 "iterator",// 开幕式
 "adapter",//场外翻译
-"facade",//(mutition)入住奥运村
 "templatemethod",//(flyweight)场外管理
 "immutable",//打印比赛项目
 "composite","strategy",//(stategy)打印比赛详情
 "bridge",//运动员、教练、志愿者自我介绍
 
 //比赛项目
-"builder",//待定项目
+"builder",//击剑
 "factorymethod",//游泳
 "delegation",//(prototype)跳水
 "decorator",//(abstracFactory)跑步、乒乓
