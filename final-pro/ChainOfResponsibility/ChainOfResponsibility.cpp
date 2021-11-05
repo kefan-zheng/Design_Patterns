@@ -18,7 +18,7 @@ void InterimCommittee::HandleRequest(int level)
 {
     if(level <= 1)//判断权级
     {
-        cout << "Application has been handed over to InterimCommittee. Please wait patiently." << endl;
+        cout << "Appeal has been handed over to InterimCommittee. Please wait patiently." << endl;
     }
     else//不满足则移交给下一处理者
     {
@@ -37,7 +37,7 @@ void ExecutiveCommittee::HandleRequest(int level)
 {
     if(level <= 2)//判断权级
     {
-        cout << "Application has been handed over to ExecutiveCommittee. Please wait patiently." << endl;
+        cout << "Appeal has been handed over to ExecutiveCommittee. Please wait patiently." << endl;
     }
     else//不满足则移交给下一处理者
     {
@@ -56,7 +56,7 @@ void PlenarySession::HandleRequest(int level)
 {
     if(level <= 3)//判断权级
     {
-        cout << "Application has been handed over to PlenarySession. Please wait patiently." << endl;
+        cout << "Appeal has been handed over to PlenarySession. Please wait patiently." << endl;
     }
     else//不满足则移交给下一处理者
     {
@@ -70,6 +70,8 @@ void testChainOfResponsibility()
     Handler* interimcommittee = new InterimCommittee;
     Handler* executivecommittee = new ExecutiveCommittee;
     Handler* plenarysession = new PlenarySession;
+
+    cout << "A player appealed to the organizing committee.\n";
 
     interimcommittee->SetNextHandler(executivecommittee);
     executivecommittee->SetNextHandler(plenarysession);

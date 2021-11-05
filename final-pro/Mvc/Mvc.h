@@ -1,4 +1,4 @@
-//
+ //
 // Created by xzb23 on 2021/10/23.
 //
 
@@ -29,21 +29,18 @@ private:
 };
 
 
-
-
-//瑙嗗浘View绫籗tudentView
+//视图View类StudentView
 class PlayerView
 {
 public:
     PlayerView() {};
     ~PlayerView() {};
 
-    void playerDetails(Player player);
+    void playerDetails(Player player,int i);
 };
 
 
-
-//controller鎺у埗鍣ㄧ被StudentController
+//controller控制器类StudentController
 class PlayerController
 {
 public:
@@ -62,11 +59,12 @@ public:
     {
         return this->model.getScore(i);
     };
-    void updateView();
+    void updateView(int i);
 private:
     Player model;
     PlayerView view;
 };
+
 
 int testMvc();
 #endif //MVC_MVC_H

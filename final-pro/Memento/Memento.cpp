@@ -72,7 +72,7 @@ void testMemento(){
 	originator->setState(singletonMedalStatus);//当前奖牌榜
 	careTaker->showState();//显示当前奖牌榜
 
-	cout << "Some Player are found using illeagal drugs in the drug test.\n";
+	cout << "Some Players are found using illeagal drugs in the drug test.\n";
 	careTaker->undo();//退回之前状态
 	careTaker->showState();
 }

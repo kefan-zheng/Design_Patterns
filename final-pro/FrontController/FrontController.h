@@ -55,9 +55,9 @@ const string designpatterns[30] = {
 
 //其他
 "observer",//观众对奖牌榜变化的反应
+"proxy",//药检查询
 "memento",// 奖牌榜状态记录与变化
 "chainofresponsibility", //申诉
-"proxy",//药检查询
 
 //下面所有设计模式被合并到其他设计模式测试函数中
 "flyweight","command","frontController","abstractfactory","multition", "singleton" ,"prototype" 

@@ -11,6 +11,7 @@
 #include <iostream>
 #include "Iterator.h"
 #include <windows.h>
+#include "../utils/cct_tools.h"
 Iterator* ConcreteAggregate::createIterator()
 {
     return new ConcreteIterator(this);
@@ -26,7 +27,7 @@ void delayTime()
 }
 int testIterator()
 {
-    int size=6;
+    int size=8;
     ConcreteAggregate list = ConcreteAggregate(size);//ÔªËØÈÝÆ÷
 
     list.addDelegation("Italy",372,19);
