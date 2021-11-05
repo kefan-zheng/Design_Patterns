@@ -150,7 +150,7 @@ void outputScene(string request) {
 		cout << "Basketball game";
 	}
 	else if (request == "mvc") {
-
+		cout << "Shooting competition";
 	}
 	else if (request == "transferobject") {
 		cout << "Badminton game";
