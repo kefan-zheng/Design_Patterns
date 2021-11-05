@@ -152,6 +152,9 @@ void outputScene(string request) {
 	else if (request == "mvc") {
 		cout << "Shooting competition";
 	}
+	else if (request == "state") {
+		cout << "Triathlon";
+	}
 	else if (request == "transferobject") {
 		cout << "Badminton game";
 	}
@@ -162,7 +165,7 @@ void outputScene(string request) {
 		cout << "Here are reactions of aundience and medias afer the change of medal ranking.";
 	}
 	else if (request == "memento") {
-		cout << "Here we will see what will happen if some players are found using illeagal drugs in the drug test";
+		cout << "Here we will see what will happen if some players are found using illeagal drugs in the drug test.";
 	}
 	else if (request == "chainofresponsibility") {
 		cout << "Now let'see the process after appealing to the organizing committee.";

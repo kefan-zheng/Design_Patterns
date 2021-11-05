@@ -7,8 +7,7 @@ using namespace std;
 
 int main()
 {
-	startAnimate();
-
+	startAnimate();//开场动画
 
 	Dispatcher dispatcher;
 	FrontController frontcontroller;
@@ -40,20 +39,20 @@ int main()
 			system("pause");
 		}
 		else if (i == preNum-1) {
-			system("pause");
 			transferAnimate(1, 2);
 			system("pause");
 		}
 		else if (i == preNum + competitionNum -1) {
-			system("pause");
-			transferAnimate(3, 3);
+			transferAnimate(2, 3);
 			system("pause");
 		}
 
 		frontcontroller.dispatchRequest(designpatterns[i]);
-		//system("pause");
+		system("pause");
 		cout << endl;
 	}
+
+	transferAnimate(3, 4);//结束动画
 	system("pause");
 	return 0;
 }
