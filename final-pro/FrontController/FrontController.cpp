@@ -188,7 +188,7 @@ void FrontController::trackRequest(string request)
 	else if (request == "mediator") {
 		request += " && command";
 	}
-	else if (request == "decrator") {
+	else if (request == "decorator") {
 		request += " && abstracFactory";
 	}
 	else if (request == "facade") {
