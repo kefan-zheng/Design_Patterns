@@ -197,7 +197,7 @@ void FrontController::trackRequest(string request)
 	else if (request == "delegation") {
 		request += " && prototype";
 	}
-	else if (request == "templateMethod") {
+	else if (request == "templatemethod") {
 		request += " && flyweight";
 	}
 	else if (request == "transferobject") {
