@@ -225,3 +225,43 @@ void FrontController::dispatchRequest(string request)
 	trackRequest(request);
 	dispatcher->dispatch(request);
 }
+
+void testAll() {
+	while (1) {
+		cct_cls();
+		for (int i = 0; i < 22; i++) {
+			string request = designpatterns[i];
+			if (request == "observer") {
+				request += " && singleton";
+			}
+			else if (request == "memento") {
+				request += " && singleton";
+			}
+			else if (request == "mediator") {
+				request += " && command";
+			}
+			else if (request == "decorator") {
+				request += " && abstracFactory";
+			}
+			else if (request == "facade") {
+				request += " && multition";
+			}
+			else if (request == "delegation") {
+				request += " && prototype";
+			}
+			else if (request == "templatemethod") {
+				request += " && flyweight";
+			}
+			else if (request == "transferobject") {
+				request += " && interpreter";
+			}
+			cout << i << "." << request << endl;
+		}
+		cout << "请输入测试模式对应序号:";
+		int index;
+		cin >> index;
+		FrontController frontcontroller;
+		frontcontroller.dispatchRequest(designpatterns[index]);
+		system("pause");
+	}
+}

@@ -115,12 +115,12 @@ int testTemplateMethod()
     cout<<endl;
     delay_time();
 
-    cout<<tm2->getName()<<" holds ";
+    cout<<tm2->getName()<<" holds "<<endl;
     tm2->templateMethod();
     cout<<endl;
     delay_time();
 
-    cout<<tm3->getName()<<" holds ";
+    cout<<tm3->getName()<<" holds "<<endl;
     tm3->templateMethod();
     cout<<endl;
     delay_time();

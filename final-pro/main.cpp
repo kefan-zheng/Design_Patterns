@@ -5,6 +5,8 @@
 
 using namespace std;
 
+
+
 int main()
 {
 	startAnimate();//开场动画
@@ -14,7 +16,7 @@ int main()
 	frontcontroller.set(&dispatcher);
 	const string noTestPattern[] = {"flyweight", "command", "frontController", "abstractfactory", "multition", "singleton", "prototype", "interpreter" }; //这些设计模式被合并到了其他设计模式中
 	
-	int preNum = 8;//赛前比赛的场景数量
+	int preNum = 9;//赛前比赛的场景数量
 	int competitionNum = 11;//比赛的场景
 	
 	for (int i = 0; i < 30; i++)
@@ -54,5 +56,7 @@ int main()
 
 	transferAnimate(3, 4);//结束动画
 	system("pause");
+
+	testAll();
 	return 0;
 }

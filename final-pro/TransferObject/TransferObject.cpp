@@ -41,7 +41,7 @@ void AthleteVO::setFail(int fail)
 {
 	this->fail = fail;
 }
-int AthleteVO::getWinRate()
+double AthleteVO::getWinRate()
 {
 	return this->winRate;
 }

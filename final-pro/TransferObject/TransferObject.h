@@ -34,7 +34,7 @@ public:
 	void setWin(int win);
 	int getFail();
 	void setFail(int fail);
-	int getWinRate();
+	double getWinRate();
 	void setWinRate(double winRate);
 	void updateWinRate(string result);
 };
