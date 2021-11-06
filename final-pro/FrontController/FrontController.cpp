@@ -257,9 +257,13 @@ void testAll() {
 			}
 			cout << i << "." << request << endl;
 		}
+		cout << "22.退出\n";
 		cout << "请输入测试模式对应序号:";
 		int index;
 		cin >> index;
+		if (index == 22) {
+			break;
+		}
 		FrontController frontcontroller;
 		frontcontroller.dispatchRequest(designpatterns[index]);
 		system("pause");

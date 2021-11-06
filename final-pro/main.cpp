@@ -17,7 +17,7 @@ int main()
 	const string noTestPattern[] = {"flyweight", "command", "frontController", "abstractfactory", "multition", "singleton", "prototype", "interpreter" }; //这些设计模式被合并到了其他设计模式中
 	
 	int preNum = 9;//赛前比赛的场景数量
-	int competitionNum = 11;//比赛的场景
+	int competitionNum = 10;//比赛的场景
 	
 	for (int i = 0; i < 30; i++)
 	{
