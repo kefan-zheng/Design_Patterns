@@ -156,6 +156,7 @@ void transferFrame0() {
 	cout << "#                        2.The various events of the Olympic Games                           #\n";
 	cout << "#                                                                                            #\n";
 	cout << "#                                    3.Other Scenes                                          #\n";
+	cout << "#                                                                                            #\n";
 	cout << "==============================================================================================\n";
 }
 
@@ -174,6 +175,7 @@ void transferFrame1() {
 	cout << "#                        2.The various events of the Olympic Games                           #\n";
 	cout << "#                                                                                            #\n";
 	cout << "#                                    3.Other Scenes                                          #\n";
+	cout << "#                                                                                            #\n";
 	cout << "==============================================================================================\n";
 }
 
@@ -192,6 +194,7 @@ void transferFrame2() {
 	cout << "                           #\n";
 	cout << "#                                                                                            #\n";
 	cout << "#                                    3.Other Scenes                                          #\n";
+	cout << "#                                                                                            #\n";
 	cout << "==============================================================================================\n";
 }
 
@@ -210,6 +213,7 @@ void transferFrame3() {
 	cout << "3.Other Scenes";
 	cct_setcolor();
 	cout << "                                          #\n";
+	cout << "#                                                                                            #\n";
 	cout << "==============================================================================================\n";
 }
 
